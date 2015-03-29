@@ -1,0 +1,21 @@
+para incluir el teste automático:
+$ bundle exec guard init
+
+Guard ya esta incluido en nuestro Gemfile.
+
+Luego editamos el archivo Guardfile alojado en la raiz de la aplicación
+https://www.railstutorial.org/book/static_pages#code-guardfile
+
+Luego incorpranos /spring en .gitignore, para evitar problemas con Git
+
+Si los testes corren muy lento, o algo se queda pegado, podemos investigar en los procesos que estan activos:
+https://www.railstutorial.org/book/static_pages#aside-processes
+
+Por último, en una nueva tab:
+
+$ bundle exec guard
+
++ info:
+https://github.com/guard/guard/wiki
+https://github.com/guard/guard
+
