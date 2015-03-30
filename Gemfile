@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+
+# used to have secured passwords https://www.railstutorial.org/book/modeling_users#cha-6_footnote-ref-18
+gem 'bcrypt',               '3.1.7'
+
 # Include Bootstrap
 gem 'bootstrap-sass'
 
