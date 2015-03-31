@@ -19,3 +19,7 @@ $ bundle exec guard
 https://github.com/guard/guard/wiki
 https://github.com/guard/guard
 
+-----------------------------------------------------------------
+Para debugind una buena herramienta es byebug:
+https://www.railstutorial.org/book/sign_up  
+ver   7.1.3 Debugger  y  7.1.1 Debug and Rails environment
