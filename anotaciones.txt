@@ -23,3 +23,10 @@ https://github.com/guard/guard
 Para debugind una buena herramienta es byebug:
 https://www.railstutorial.org/book/sign_up  
 ver   7.1.3 Debugger  y  7.1.1 Debug and Rails environment
+
+-----------------------------------------------------------------
+A lo hora de publicar el sitio, revisar
+7.5.1 SSL in production | https://www.railstutorial.org/book/sign_up
+Funciona para hacer funcionar la aplicación bajo ciertos estándares altos de seguridad.
+
+
