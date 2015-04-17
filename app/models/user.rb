@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
 	validates :email, presence:true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX },
 					uniqueness: { case_sensitive: false }
 
-  has_secure_password
-	validates :password, length: { minimum: 6 }
+  has_secure_password #https://www.railstutorial.org/book/modeling_users#sec-adding_a_secure_password
+	validates :password, length: { minimum: 6 }, allow_blank: true
 
   # Adding a digest method for use in fixtures
   # Returns the hash digest of the given string | usado para testar usuarios, login logout

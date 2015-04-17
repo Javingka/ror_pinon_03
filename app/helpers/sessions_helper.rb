@@ -12,6 +12,11 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
+  # Returns true if the given user is the current user.
+  def current_user?(user)
+    user == current_user
+  end
+
   #https://www.railstutorial.org/book/sign_up ver 8.2.2  BOX 8.1
   def current_user # return current_user objet, lo busca por id, si ya existe actualiza su valor simplemente
     if (user_id = session[:user_id])  # If session of user id exists (while setting user id to session of user id)
@@ -41,6 +46,18 @@ module SessionsHelper
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  # for friendly forward. https://www.railstutorial.org/book/updating_and_deleting_users#code-edit_update_redirect_tests
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
   end
 
 end
