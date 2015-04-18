@@ -1,0 +1,8 @@
+<h1>  Taller Piñon </h1>
+
+<p> Hola <%= @user.name %> </p>
+
+<p> Bienvenido a la comunidad de Taller Piñon. Haz click en el siguiente link para activar tu cuenta </p>
+
+<%= link_to "Activar!", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+

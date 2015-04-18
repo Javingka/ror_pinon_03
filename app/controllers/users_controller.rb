@@ -20,9 +20,9 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)  #https://www.railstutorial.org/book/sign_up#sec-strong_parameters
 		if @user.save
-      log_in @user
-			flash[:success] = "Bienvenido a la comunidad Piñon!"
-			redirect_to @user # the same as redirect_to user_url(@user)
+      @user.send_activation_email
+      flash[:info] = "Por favor revisa tu correo electrónico para activar tu cuenta"
+      redirect_to root_url
 		else
 			render 'new'
 		end
