@@ -1,14 +1,54 @@
 <% provide(:title, "Home") %>
+<% content_for :home do %>
 
-<!-- 
-<div class="header-unit">
-  <div id="video-container">
-    <video autoplay loop muted class="fillWidth">
-      <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"/>
-      <source src="http://vjs.zencdn.net/v/oceans.ogg" type="video/ogg"/>
-      <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"/>
-      Your browser does not support the video tag. I suggest you upgrade your browser.
-    </video> -->
- <!-- </div> end video-container -->
-<!-- </div> end .header-unit -->
-<%= render 'shared/formMicropost' %>
+  <% if logged_in? %>
+    <div class="container">
+        <div class="jumbotron">
+          <%= render 'shared/loginview' %>
+        </div>
+     </div>
+   <% else %>
+    <!-- PRIMERA VENTANA INTRO - VIDEO/LOGO -->
+    <div class="header-unit-0">
+      <div id="video-container">
+        <video autoplay loop muted class="fillWidth">
+          <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"/>
+          <source src="http://vjs.zencdn.net/v/oceans.ogg" type="video/ogg"/>
+          <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"/>
+          Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video> 
+      </div> <!--  end video-container -->
+      <!-- LOGO sobre el video -->
+      <div class="row">
+        <div class="logo-over-video col-md-2 col-md-offset-5">
+          <%= link_to image_tag("tp.png", alt: "Taller Piñon logo", size:'200x200'), root_url %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="center col-md-4 col-md-offset-4">
+          <%= render 'shared/logoutview' %>
+        </div>
+      </div>
+    </div> <!-- end .header-unit -->
+
+
+  <% end %>
+
+
+    <!-- APLICACIÓN CUSTOMIZACIÓN -->
+    <section class="section-wide-white" id="moto-custom">
+        <div class="container">
+            <div class="app-custom-bg center jumbotron">
+              <%= render 'static_pages/customapp' %>
+            </div>
+        </div>
+    </section>
+    <div class="container" id="galeria-motos" >
+        <div class="jumbotron">
+          <h2> Galeria de ultimas motos diseñadas  </h2>
+        </div>
+    </div>
+
+
+
+<% end %>

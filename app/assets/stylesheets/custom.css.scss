@@ -3,7 +3,10 @@
 
 /* mixins, variables, etc. */
 
-$gray-medium-light: #eaeaea;
+$gray-medium-light: #fff; //#eaeaea;
+$gray-medium-light-alpha: rgba(255,255,255,.1);
+$white: #fff; 
+$radio-round: 5px;
 
 /* A mixin allows a group of CSS rules to be packaged up and used for multiple elements */
 @mixin box_sizing {
@@ -32,7 +35,13 @@ textarea {
     margin-bottom: 10px;
   }
 }
-
+.navbar {
+  background-color:$gray-medium-light;
+}
+.section-wide-white {
+  background-color:$white;
+  margin-bottom: 50px;
+}
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -79,6 +88,8 @@ p {
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
+  width:50px;
+  height:50px;
   &:hover {
     color: white;
     text-decoration: none;
@@ -242,12 +253,26 @@ input {
 /* Video */
 
 .header-unit {
-  height: 150px;
+  height: 600px;
   border: 2px solid #000;
   border-right:none;
   border-left: none;
   position: relative;
   padding: 20px;
+}
+.logo-over-video{
+  margin-top: 100px;
+}
+.header-unit-0 {
+  height: 600px;
+  border: 2px solid #000;
+  border-right:none;
+  border-left: none;
+  position: relative;
+  padding: 20px;
+  h2 {
+    color: #fff;
+  }
 }
 #video-container {
 	position: absolute;
@@ -264,6 +289,9 @@ video {
 	z-index:0;
 }
 video.fillWidth {
+	width: 100%;
+}
+.fillWidth {
 	width: 100%;
 }
 /* Users index */
@@ -324,4 +352,34 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+/* APP custom CSS */
+.app-custom-bg {
+  background-color:$gray-medium-light;
+}
+
+.btn-parte-moto {
+  margin-top: 5px;
+  width: 50px;
+  height: 50px;
+  background-color: #505050;
+  
+  p {
+    font-size: 30px;
+  }
+}
+
+/* Round corners */
+
+.round {
+	-moz-border-radius:$radio-round;
+	-webkit-border-radius: $radio-round;
+	border-radius:$radio-round;
+}
+
+/* jumbrotron custom */
+
+.jbg {
+  background: url('dorado0.jpg') no-repeat center center;
 }

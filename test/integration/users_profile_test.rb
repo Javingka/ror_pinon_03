@@ -16,7 +16,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     # response.body contains the full HTML source of the page (and not just the page’s body)
     assert_match @user.microposts.count.to_s, response.body 
     assert_select 'div.pagination' # This checks for an img tag with class gravatar inside a top-level heading tag (h1)
-    @user.microposts.paginate(page: 1).each do |micropost|
+    @user.microposts.paginate(page: 1, :per_page => 10 ).each do |micropost|
       assert_match micropost.content, response.body
     end
   end
