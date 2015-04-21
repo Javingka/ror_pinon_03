@@ -72,6 +72,14 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "associated motos should be destroyed" do
+    @user.save
+    @user.motos.create!(modelo: "cafe", name: "test", description: "Lorem ipsum")
+    assert_difference 'Moto.count', -1 do
+      @user.destroy
+    end
+  end
+
   test "should follow and unfollow a user" do
     javier = users(:javier)
     archer  = users(:archer)

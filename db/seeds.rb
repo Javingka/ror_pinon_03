@@ -23,7 +23,7 @@ User.create!(name:  "Admin",
              activated: true,
              activated_at: Time.zone.now)
 
-99.times do |n|
+50.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@pinonTest.org"
   password = "password"
@@ -41,6 +41,12 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
+# Creating motos in Users
+user = User.second
+content = Faker::Lorem.sentence(10)
+user.motos.create!(modelo: "cafe racer", name: "mi moto", description: content )
+user = User.find_by(email: 'admin@pinon.cl') 
+user.motos.create!(modelo: "scrambler", name: "mi moto", description: content )
 
 # Following relationships
 users = User.all

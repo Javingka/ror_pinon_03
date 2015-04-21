@@ -1,0 +1,2 @@
+class MotosController < ApplicationController
+end
