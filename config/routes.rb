@@ -22,4 +22,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+  resources :motos,               only: [:index, :new, :create, :destroy, :edit, :update, :show]
+  get 'index_pinon' => 'motos#indexPinon'
+
 end

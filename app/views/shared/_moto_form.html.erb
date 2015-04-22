@@ -1,0 +1,27 @@
+<h3 class="center"> Mis motos </h3>
+<ul class="motos-preview">
+  <% @user.motos.each do |moto| %>
+    <li id="moto-<%= moto.id %>" >
+      <div class="row">
+        <div class="col-md-6">
+          <% if moto.picture? %>
+            <%= link_to image_tag(moto.picture.url, alt: "foto-moto", class:'mini-foto'), moto_path(moto)  %>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <span class="nombre"> <%= moto.name %></span> <br>
+          <span class="modelo"> <%= moto.modelo %> </span> <br>
+          <span>  <%= link_to 'ver detalles', moto_path(moto)  %> </span > <br>
+          <span class="links">
+            <% if current_user?(moto.user) %>
+              <%= link_to "eliminar moto", moto, method: :delete, data: { confirm: "Estas seguro?" } %>
+            <% end %>
+          </span> <br>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+
+

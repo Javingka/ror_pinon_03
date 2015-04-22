@@ -10,11 +10,8 @@
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
-    <section>
-      <ul class="motos">
-        <%= render @motos %>
-      </ul>
-    </section>
+    <hr>
+    <%= render 'shared/moto_form' %>
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>

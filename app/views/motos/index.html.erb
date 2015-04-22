@@ -1,0 +1,10 @@
+<h1> Motos (<%= Moto.count %>) </h1>
+<h2 class="center"> Lista con todas las motos de todos los usuarios </h2>
+
+
+<%= will_paginate %>
+<ul class='motos-preview' >
+    <%= render @motos %>
+</ul>
+
+<%= will_paginate %>
