@@ -19,4 +19,12 @@ class StaticPagesController < ApplicationController
 
 	def contact
 	end
+
+  def contact_create
+    @contacto = params[:contact]
+    ContactMailer.contact_form(@contacto).deliver
+    flash[:info] = "Tu mensaje ha sido enviado!"
+    redirect_to root_url
+
+  end
 end

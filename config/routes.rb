@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	get	'home' => 'static_pages#home'
 	get	'help' => 'static_pages#help'
 	get 'about' => 'static_pages#about'
+	post 'contact_create' => 'static_pages#contact_create'
 	get 'contact' => 'static_pages#contact'
 	get 'signup' => 'users#new'
 
@@ -24,5 +25,5 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   resources :motos,               only: [:index, :new, :create, :destroy, :edit, :update, :show]
   get 'index_pinon' => 'motos#indexPinon'
-
+  
 end
