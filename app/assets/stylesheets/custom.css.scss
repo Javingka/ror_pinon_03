@@ -399,17 +399,37 @@ span.picture {
 .app-custom-bg {
   background-color:$gray-medium-light;
 }
-
+.btn-parte-color {
+  float: center; 
+  width:50px;
+}
 .btn-parte-moto {
   margin-top: 5px;
-  width: 50px;
+  width: 80px;
   height: 50px;
-  background-color: #505050;
+  background-color: transparent;
   
   p {
     font-size: 30px;
   }
 }
+.option-custom {
+  .dropdown-menu {
+    background-color: #fff;
+    li {
+    }
+  }
+}
+
+/* Imagenes de motos */
+
+.plantilla-moto {
+  position: relative;
+}
+.capa-moto {
+  position: absolute;
+}
+
 
 /* Round corners */
 
