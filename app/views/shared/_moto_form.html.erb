@@ -1,11 +1,12 @@
 <h3 class="center"> Mis motos </h3>
+
 <ul class="motos-preview">
-  <% @user.motos.each do |moto| %>
+  <% @user.motos.paginate(page: params[:page], :per_page => 3).each do |moto| %>
     <li id="moto-<%= moto.id %>" >
       <div class="row">
         <div class="col-md-6">
           <% if moto.picture? %>
-            <%= link_to image_tag(moto.picture.url, alt: "foto-moto", class:'mini-foto'), moto_path(moto)  %>
+            <%= link_to image_tag(moto.picture.url, alt: "foto-moto", class:'moto-responsive'), moto_path(moto)  %>
           <% end %>
         </div>
         <div class="col-md-6">
@@ -22,6 +23,7 @@
     </li>
   <% end %>
 </ul>
-
-
-
+<p class="center"><%= link_to 'nueva moto', new_moto_path %></p>
+<div class="col-md-offset-2" style="margin-top: -30px">
+<%= will_paginate @user.motos.paginate(page: params[:page], :per_page => 3) %>
+</div>

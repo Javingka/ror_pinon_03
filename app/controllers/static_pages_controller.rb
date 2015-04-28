@@ -11,6 +11,13 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def customapp 
+    @userPinon = User.find_by(email: 'admin@pinon.cl') 
+    if !@userPinon.nil?  # I had to put this in order to pass the test 
+    @motos = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
+    end
+  end
+
   def help
   end
 

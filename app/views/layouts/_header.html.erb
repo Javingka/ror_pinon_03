@@ -5,12 +5,14 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",  root_path , class:"page-scroll", method: :get%></li>
+        <% if !current_page?(contact_path) && !current_page?(about_path) %>
+          <li><%= link_to "Motos Piñon",  '#galeria-motos' , class:"page-scroll"%></li>
+        <% end %>
         <% if logged_in? %>
           <li><%= link_to "Moto Custom", root_path+('#moto-custom'), class:"page-scroll" %></li>
         <% else %>
-          <li><%= link_to "Moto Custom", '#moto-custom', class:"page-scroll" %></li>
+          <li><%= link_to "Moto Custom", customapp_path, class:"page-scroll" %></li>
         <% end %>
-        <li><%= link_to "Motos Piñon",  '#galeria-motos' , class:"page-scroll"%></li>
         <% if logged_in? %>
           <li><%= link_to "Motos Usuarios", motos_path %> </li>
           <li><%= link_to "Usuarios", users_path %> </li>
