@@ -18,6 +18,16 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def fetch
+    color =  params[:selected_value]
+    color = color.upcase
+    @est_file = "custom_app/perspectiva/per_estanque_"+color+".png"
+    puts @est_file
+    resp = ActionController::Base.helpers.asset_path @est_file
+    puts resp
+    render :text => resp
+  end
+
   def help
   end
 

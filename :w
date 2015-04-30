@@ -1,0 +1,135 @@
+
+<!-- BOTONES DE CUSTOMIZACION -->
+<div class="row option-custom">
+    <!-- ASIENTO -->
+  <div class="col-md-1 col-md-offset-4">
+    <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <%= link_to image_tag('custom_app/asiento-icon.png', alt:'estanque icon', style:'max-width:50px; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <ul class="dropdown-menu">
+              <li>
+                <ul class='kwicks kwicks-horizontal'>
+                  <% 25.times do |x| %>
+                    <li id='panel-0<%=x%>'> </li> 
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+          </li>
+    </ul>
+  </div>
+    <!-- MANIJAR -->
+  <div class="col-md-1">
+    <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <%= link_to image_tag('custom_app/manijar-icon.png', alt:'estanque icon', style:'max-width:50px; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <ul class="dropdown-menu">
+              <li>
+                <ul class='kwicks kwicks-horizontal'>
+                  <% 25.times do |x| %>
+                    <li id='panel-<%=x%>'> </li> 
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+          </li>
+    </ul>
+  </div>
+    <!-- APLICACIÓN -->
+  <div class="col-md-1">
+    <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <%= link_to image_tag('custom_app/aplicacion-icon.png', alt:'estanque icon', style:'max-width:50px; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <ul class="dropdown-menu">
+              <li>
+                <ul class='kwicks kwicks-horizontal'>
+                  <% 25.times do |x| %>
+                    <li id='panel-<%=x%>'> </li> 
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+          </li>
+    </ul>
+  </div>
+    <!-- ESTANQUE -->
+  <div class="col-md-1">
+    <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <%= link_to image_tag('custom_app/estanque-icon.png', alt:'estanque icon', style:'max-width:50px; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to image_tag('custom_app/estanque-icon_op.png', alt:'estanque opcion', style:'max-width:20px; height:auto;', style:'background-color: #ff0000', class:'round btn-parte-color '), '#_' %>
+              </li>
+              <li>
+                <%= link_to image_tag('custom_app/estanque-icon_op.png', alt:'estanque opcion', style:'max-width:20px; height:auto;', style:'background-color: #00ff00', class:'round btn-parte-color '), '#_' %>
+              </li>
+            </ul>
+          </li>
+    </ul>
+  </div>
+</div>
+<h1></h1>
+
+
+<!-- DISPLAYS -->
+<div class="row">
+  <div class="col-md-4">
+    <div class="row ">
+      <div class="col-md-12">
+    <%= image_tag("custom_app/Plantillaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;' )%>
+      </div>
+    </div>
+    <div class="row">
+    <%= image_tag("custom_app/Plantillaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;' )%>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="plantilla-moto">
+    <%= image_tag("custom_app/grippruebaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto' )%>
+    <%= image_tag("custom_app/estanquepruebaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'est-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/asientopruebaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto' )%>
+    <%= image_tag("custom_app/aplicacionpruebaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto' )%>
+    <%= image_tag("custom_app/perspectiva/per_plantilla.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;')%>
+    
+    <div style="position: relative" ></div>
+  </div>
+  </div>
+</div>
+
+
+
+<script type='text/javascript'>
+function changeEstanque(color) {
+  //  document.getElementById('est-app');
+    var arq = 'custom_app/perspectiva/per_estanque_'+color+'.png';
+    var image_path = "<%= asset_path('" + color +"') %>"
+    var path =  '<%= asset_path 'custom/perspectiva/per_estanque_00A1F8.png' %>';
+  //  $('#est-app').attr("src", nuevaImag);
+    var s = document.getElementById('est-app').src;
+    alert(arq + " | " + image_path + " | "+s );
+    $('#est-app').attr("src",url('/assets/per_estanque_00A1F8.png'));
+//    $('#est-app').attr("src",  '<%= asset_path 'custom_app/perspectiva/per_estanque_00A1F8.png '%>'); 
+};
+    $().ready(function() {
+        $('.kwicks').kwicks({
+            maxSize : 250,
+            behavior: 'menu'
+        });
+        $('#panel-01').click(function(){
+          $('#panel-01').css("background-color", "#ff00ff");
+        }); 
+        $(".kwicks li").click(function(event) {
+          var ele = document.getElementById(event.target.id);
+          var color = $(ele).css("background-color"); //event.target.backgroundColor;
+          var col = new RGBColor (color); //Usando la clase RGB color incluida en assets
+            $(ele).css("background-color", color);
+          $('body').css("background-color", color);
+     //    alert(event.target.id + ' '  +  col.toHex_n()  );
+          changeEstanque( col.toHex_n());
+        });
+    });
+
+
+</script>

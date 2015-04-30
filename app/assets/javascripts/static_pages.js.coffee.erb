@@ -1,0 +1,36 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+$().ready ->
+  $('.kwicks').kwicks
+    maxSize: 250
+    behavior: 'menu'
+  $('.kwicks li').click (event) ->
+    ele = document.getElementById(event.target.id)
+    color = $(ele).css('background-color')
+    col = new RGBColor(color)
+    #Usando la clase RGB color incluida en assets
+    changeEstanque col.toHex_n()
+    return
+  return
+
+changeEstanque = (color) ->
+  #  document.getElementById('est-app');
+  arq = root+'public/custom_app/perspectiva/per_estanque_' + color + '.png'
+  col_ = "custom_app/perspectiva/per_estanque_" + color + ".png"
+#  $.post "fetch" , selected_value : col_
+  #  $('#est-app').attr("src", nuevaImag);
+  s = document.getElementById('est-app').src
+  $.ajax
+          type: 'POST'
+          url: "fetch"
+          data:
+            selected_value: color
+          dataType: "text"
+          success: (data) ->
+            $('#est-app').attr src: data
+            # alert data + ' | ' + s 
+  return
+
+

@@ -80,16 +80,18 @@ p {
 /* header */
 
 #logo {
+display: table-cell;
+  margin-top:-7px;
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
+  margin-right: 1px;
+  font-size: 0.7em;
+  color: black;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-  width:50px;
-  height:50px;
+  width: 250px;
+  height:48px;
   &:hover {
     color: white;
     text-decoration: none;
@@ -268,7 +270,7 @@ input {
   padding: 20px;
 }
 .logo-over-video{
-  margin-top: 100px;
+  margin-top: 0px;
 }
 .header-unit-0 {
   height: 600px;
@@ -414,7 +416,7 @@ span.picture {
 }
 .option-custom {
   .dropdown-menu {
-    background-color: #fff;
+    //background-color: #fff;
     li {
     }
   }
@@ -446,3 +448,6 @@ span.picture {
 .jbg {
   background: url('dorado0.jpg') no-repeat center center;
 }
+
+
+
