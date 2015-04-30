@@ -405,20 +405,16 @@ span.picture {
   width:50px;
 }
 .btn-parte-moto {
-  margin-top: 5px;
-  width: 150px;
-  height: 50px;
-  background-color: transparent;
-  
+  border-radius:65px;
   p {
     font-size: 30px;
   }
 }
-.option-custom {
-  .dropdown-menu {
-    //background-color: #fff;
-    li {
-    }
+.dropdown-menu {
+  margin-color: #000;
+  border-color: #000;
+  background-color: #000;
+  li {
   }
 }
 
@@ -431,6 +427,10 @@ span.picture {
   position: relative;
 }
 .capa-moto {
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  border:1px solid black;
   position: absolute;
 }
 

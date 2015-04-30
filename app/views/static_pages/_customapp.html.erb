@@ -1,11 +1,9 @@
-
-<!-- BOTONES DE CUSTOMIZACION -->
-<div class="row">
-    <!-- ESTANQUE  -->
-  <div class="col-md-2 col-md-offset-2">
-    <ul class="nav navbar-nav navbar-right">
+<div class="container menu-custom"  style='background-color: #000; border-radius: 60px; height: 130px;'  >
+  <div class="row">
+    <div class="col-md-2 col-md-offset-2">
+      <ul class="nav navbar-nav navbar-left">
           <li class="dropdown">
-            <%= link_to image_tag('custom_app/est-icon.png', alt:'estanque icon', style:'max-width:100%; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <%= link_to image_tag('custom_app/est-icon.png', alt:'estanque icon', style:'max-width:100px; height:auto; '), '#', class:'dropdown-toogle btn-parte-moto', :data => {:toggle=>"dropdown"}%>
             <ul class="dropdown-menu">
               <li>
                 <ul class='kwicks kwicks-horizontal'>
@@ -16,13 +14,13 @@
               </li>
             </ul>
           </li>
-    </ul>
+
+      </ul>
   </div>
-    <!-- APLICACION -->
-  <div class="col-md-2">
+    <div class="col-md-2">
     <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <%= link_to image_tag('custom_app/apl-icon.png', alt:'estanque icon', style:'max-width:100%; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <%= link_to image_tag('custom_app/apl-icon.png', alt:'estanque icon', style:'max-width:100px; height:auto;'), '#', class:'dropdown-toogle  btn-parte-moto', :data => {:toggle=>"dropdown"}%>
             <ul class="dropdown-menu">
               <li>
                 <ul class='kwicks kwicks-horizontal'>
@@ -35,11 +33,10 @@
           </li>
     </ul>
   </div>
-    <!-- ASIENTO -->
-  <div class="col-md-2">
+    <div class="col-md-2">
     <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <%= link_to image_tag('custom_app/asi-icon.png', alt:'estanque icon', style:'max-width:100%; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <%= link_to image_tag('custom_app/asi-icon.png', alt:'estanque icon', style:'max-width:100px; height:auto;'), '#', class:'dropdown-toogle btn-parte-moto', :data => {:toggle=>"dropdown"}%>
             <ul class="dropdown-menu">
               <li>
                 <ul class='kwicks kwicks-horizontal'>
@@ -52,11 +49,10 @@
           </li>
     </ul>
   </div>
-    <!-- MANILLA -->
-  <div class="col-md-2">
+    <div class="col-md-2">
     <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <%= link_to image_tag('custom_app/man-icon.png', alt:'estanque icon', style:'max-width:100%; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <%= link_to image_tag('custom_app/man-icon.png', alt:'estanque icon', style:'max-width:100px; height:auto;'), '#', class:'dropdown-toogle btn-parte-moto', :data => {:toggle=>"dropdown"}%>
             <ul class="dropdown-menu">
               <li>
                 <ul class='kwicks kwicks-horizontal'>
@@ -68,14 +64,14 @@
             </ul>
           </li>
     </ul>
+
+  </div>
   </div>
 </div>
-<h1></h1>
-
-
+<br>
 <!-- DISPLAYS -->
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3 col-md-offset-1 ">
     <div class="row ">
       <div class="col-md-12">
     <div class="plantilla-moto">
@@ -99,7 +95,7 @@
     </div>
     </div>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-7">
     <div class="plantilla-moto">
     <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'per-est-app', class:'capa-moto' )%>
     <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'per-apl-app', class:'capa-moto' )%>
