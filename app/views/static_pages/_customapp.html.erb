@@ -1,15 +1,15 @@
 
 <!-- BOTONES DE CUSTOMIZACION -->
-<div class="row option-custom">
-    <!-- ASIENTO -->
-  <div class="col-md-1 col-md-offset-4">
+<div class="row">
+    <!-- ESTANQUE  -->
+  <div class="col-md-2 col-md-offset-2">
     <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <%= link_to image_tag('custom_app/asiento-icon.png', alt:'estanque icon', style:'max-width:50px; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <%= link_to image_tag('custom_app/est-icon.png', alt:'estanque icon', style:'max-width:100%; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
             <ul class="dropdown-menu">
               <li>
                 <ul class='kwicks kwicks-horizontal'>
-                  <% 25.times do |x| %>
+                  <% 19.times do |x| %>
                     <li id='panel-0<%=x%>'> </li> 
                   <% end %>
                 </ul>
@@ -18,16 +18,16 @@
           </li>
     </ul>
   </div>
-    <!-- MANIJAR -->
-  <div class="col-md-1">
+    <!-- APLICACION -->
+  <div class="col-md-2">
     <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <%= link_to image_tag('custom_app/manijar-icon.png', alt:'estanque icon', style:'max-width:50px; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <%= link_to image_tag('custom_app/apl-icon.png', alt:'estanque icon', style:'max-width:100%; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
             <ul class="dropdown-menu">
               <li>
                 <ul class='kwicks kwicks-horizontal'>
                   <% 25.times do |x| %>
-                    <li id='panel-<%=x%>'> </li> 
+                    <li id='panel-1<%=x%>'> </li> 
                   <% end %>
                 </ul>
               </li>
@@ -35,16 +35,16 @@
           </li>
     </ul>
   </div>
-    <!-- APLICACIÓN -->
-  <div class="col-md-1">
+    <!-- ASIENTO -->
+  <div class="col-md-2">
     <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <%= link_to image_tag('custom_app/aplicacion-icon.png', alt:'estanque icon', style:'max-width:50px; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <%= link_to image_tag('custom_app/asi-icon.png', alt:'estanque icon', style:'max-width:100%; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
             <ul class="dropdown-menu">
               <li>
                 <ul class='kwicks kwicks-horizontal'>
-                  <% 25.times do |x| %>
-                    <li id='panel-<%=x%>'> </li> 
+                  <% 6.times do |x| %>
+                    <li id='panel-2<%=x%>'> </li> 
                   <% end %>
                 </ul>
               </li>
@@ -52,17 +52,18 @@
           </li>
     </ul>
   </div>
-    <!-- ESTANQUE -->
-  <div class="col-md-1">
+    <!-- MANILLA -->
+  <div class="col-md-2">
     <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <%= link_to image_tag('custom_app/estanque-icon.png', alt:'estanque icon', style:'max-width:50px; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
+            <%= link_to image_tag('custom_app/man-icon.png', alt:'estanque icon', style:'max-width:100%; height:auto;'), '#', class:'dropdown-toogle round btn-parte-moto', :data => {:toggle=>"dropdown"}%>
             <ul class="dropdown-menu">
               <li>
-                <%= link_to image_tag('custom_app/estanque-icon_op.png', alt:'estanque opcion', style:'max-width:20px; height:auto;', style:'background-color: #ff0000', class:'round btn-parte-color '), '#_' %>
-              </li>
-              <li>
-                <%= link_to image_tag('custom_app/estanque-icon_op.png', alt:'estanque opcion', style:'max-width:20px; height:auto;', style:'background-color: #00ff00', class:'round btn-parte-color '), '#_' %>
+                <ul class='kwicks kwicks-horizontal'>
+                  <% 7.times do |x| %>
+                    <li id='panel-3<%=x%>'> </li> 
+                  <% end %>
+                </ul>
               </li>
             </ul>
           </li>
@@ -77,20 +78,34 @@
   <div class="col-md-4">
     <div class="row ">
       <div class="col-md-12">
-    <%= image_tag("custom_app/Plantillaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;' )%>
+    <div class="plantilla-moto">
+    <%= image_tag("custom_app/area_transparente.png", alt: "sup-est-app", style:'max-width:100%; height:auto;', id:'sup-est-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "sup-apl-app", style:'max-width:100%; height:auto;', id:'sup-apl-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "sup-asi-app", style:'max-width:100%; height:auto;', id:'sup-asi-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "sup-man-app", style:'max-width:100%; height:auto;', id:'sup-man-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/superior/sup_plantilla.png", alt: "sup-pla-app", style:'max-width:100%; height:auto;', id:'sup-pla-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "area transparente", style:'max-width:100%; height:auto;')%>
+      </div>
       </div>
     </div>
     <div class="row">
-    <%= image_tag("custom_app/Plantillaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;' )%>
+    <div class="plantilla-moto">
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'lat-est-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'lat-apl-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'lat-asi-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'lat-man-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/lateral/lat_plantilla.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'lat-pla-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;')%>
+    </div>
     </div>
   </div>
   <div class="col-md-8">
     <div class="plantilla-moto">
-    <%= image_tag("custom_app/grippruebaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto' )%>
-    <%= image_tag("custom_app/estanquepruebaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'est-app', class:'capa-moto' )%>
-    <%= image_tag("custom_app/asientopruebaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto' )%>
-    <%= image_tag("custom_app/aplicacionpruebaax4.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto' )%>
-    <%= image_tag("custom_app/perspectiva/per_plantilla.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'per-est-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'per-apl-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'per-asi-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'per-man-app', class:'capa-moto' )%>
+    <%= image_tag("custom_app/perspectiva/per_plantilla.png", alt: "test moto img", style:'max-width:100%; height:auto;', id:'per-pla-app', class:'capa-moto' )%>
     <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;')%>
     
     <div style="position: relative" ></div>

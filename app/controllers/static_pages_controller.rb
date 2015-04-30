@@ -18,15 +18,54 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def fetch
+  def fetch_estanque
     color =  params[:selected_value]
     color = color.upcase
-    @est_file = "custom_app/perspectiva/per_estanque_"+color+".png"
-    puts @est_file
-    resp = ActionController::Base.helpers.asset_path @est_file
-    puts resp
-    render :text => resp
+    @per_file = "custom_app/perspectiva/per_estanque_"+color+".png"
+    @lat_file = "custom_app/lateral/lat_estanque_"+color+".png"
+    @sup_file = "custom_app/superior/sup_estanque_"+color+".png"
+    per_r = ActionController::Base.helpers.asset_path @per_file
+    lat_r = ActionController::Base.helpers.asset_path @lat_file
+    sup_r = ActionController::Base.helpers.asset_path @sup_file
+    render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
   end
+
+  def fetch_aplicacion
+    color =  params[:selected_value]
+    color = color.upcase
+    @per_file = "custom_app/perspectiva/per_aplicacion_"+color+".png"
+    @lat_file = "custom_app/lateral/lat_aplicacion_"+color+".png"
+    @sup_file = "custom_app/superior/sup_aplicacion_"+color+".png"
+    per_r = ActionController::Base.helpers.asset_path @per_file
+    lat_r = ActionController::Base.helpers.asset_path @lat_file
+    sup_r = ActionController::Base.helpers.asset_path @sup_file
+    render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
+  end
+
+  def fetch_asiento
+    color =  params[:selected_value]
+    color = color.upcase
+    @per_file = "custom_app/perspectiva/per_asiento_"+color+".png"
+    @lat_file = "custom_app/lateral/lat_asiento_"+color+".png"
+    @sup_file = "custom_app/superior/sup_asiento_"+color+".png"
+    per_r = ActionController::Base.helpers.asset_path @per_file
+    lat_r = ActionController::Base.helpers.asset_path @lat_file
+    sup_r = ActionController::Base.helpers.asset_path @sup_file
+    render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
+  end
+
+  def fetch_manilla
+    color =  params[:selected_value]
+    color = color.upcase
+    @per_file = "custom_app/perspectiva/per_manilla_"+color+".png"
+    @lat_file = "custom_app/lateral/lat_manilla_"+color+".png"
+    @sup_file = "custom_app/superior/sup_manilla_"+color+".png"
+    per_r = ActionController::Base.helpers.asset_path @per_file
+    lat_r = ActionController::Base.helpers.asset_path @lat_file
+    sup_r = ActionController::Base.helpers.asset_path @sup_file
+    render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
+  end
+
 
   def help
   end
@@ -42,6 +81,7 @@ class StaticPagesController < ApplicationController
     ContactMailer.contact_form(@contacto).deliver
     flash[:info] = "Tu mensaje ha sido enviado!"
     redirect_to root_url
-
   end
+
 end
+

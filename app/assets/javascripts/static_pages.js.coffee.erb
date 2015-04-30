@@ -10,25 +10,112 @@ $().ready ->
     ele = document.getElementById(event.target.id)
     color = $(ele).css('background-color')
     col = new RGBColor(color)
+    colhex = col.toHex_n()
+    parte = event.target.id.charAt(6)
+
+    switch parte
+     when '0'
+       changeEstanque colhex
+     when '1'
+       changeAplicacion colhex
+     when '2'
+       changeAsiento colhex
+     when '3'
+       changeManilla colhex
+
     #Usando la clase RGB color incluida en assets
-    changeEstanque col.toHex_n()
     return
   return
 
 changeEstanque = (color) ->
-  #  document.getElementById('est-app');
-#  $.post "fetch" , selected_value : col_
-  #  $('#est-app').attr("src", nuevaImag);
-  s = document.getElementById('est-app').src
   $.ajax
           type: 'POST'
-          url: "fetch"
+          url: "fetch_estanque"
           data:
             selected_value: color
-          dataType: "text"
+          dataType: "json"
           success: (data) ->
-            $('#est-app').attr src: data
+     #       alert data
+            $('#per-est-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+              $('#per-est-app').attr src: data.per
+
+            $('#lat-est-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+            $('#lat-est-app').attr src: data.lat
+
+            $('#sup-est-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+            $('#sup-est-app').attr src: data.sup
             # alert data + ' | ' + s 
   return
 
+changeAplicacion = (color) ->
+  $.ajax
+          type: 'POST'
+          url: "fetch_aplicacion"
+          data:
+            selected_value: color
+          dataType: "json"
+          success: (data) ->
+            $('#per-apl-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+              $('#per-apl-app').attr src: data.per
 
+            $('#lat-apl-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+            $('#lat-apl-app').attr src: data.lat
+  return
+
+changeAsiento = (color) ->
+  $.ajax
+          type: 'POST'
+          url: "fetch_asiento"
+          data:
+            selected_value: color
+          dataType: "json"
+          success: (data) ->
+            $('#per-asi-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+              $('#per-asi-app').attr src: data.per
+
+            $('#lat-asi-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+            $('#lat-asi-app').attr src: data.lat
+
+            $('#sup-asi-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+            $('#sup-asi-app').attr src: data.sup
+  return
+
+changeManilla = (color) ->
+  $.ajax
+          type: 'POST'
+          url: "fetch_manilla"
+          data:
+            selected_value: color
+          dataType: "json"
+          success: (data) ->
+            $('#per-man-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+              $('#per-man-app').attr src: data.per
+
+            $('#lat-man-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+            $('#lat-man-app').attr src: data.lat
+
+            $('#sup-man-app').fadeOut "fast", ->
+              $(this).load ->
+                $(this).fadeIn("slow")
+            $('#sup-man-app').attr src: data.sup
+  return

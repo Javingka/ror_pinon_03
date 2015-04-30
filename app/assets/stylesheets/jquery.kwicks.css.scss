@@ -40,27 +40,79 @@
 }
 
 .kwicks {
-  width: 515px;
+  width: 400px;
   height: 100px;
 }
 .kwicks > li {
-  height: 100px;
+  height: 80px;
   /* overridden by kwicks but good for when JavaScript is disabled */
   width: 125px;
-  margin-left: 5px;
+  margin-left: 3px;
   float: left;
 }
 
+// IDs para imagenes del estanque
 #panel-00 { background-color: #00A1F8; }
 #panel-01 { background-color: #0C516D; }
 #panel-02 { background-color: #00cfab; }
 #panel-03 { background-color: #1D5954; }
 #panel-04 { background-color: #9E2CAA; }
+#panel-05 { background-color: #77CAF7; }
+#panel-06 { background-color: #2693A4; }
+#panel-07 { background-color: #504166; }
+#panel-08 { background-color: #870217; }
+#panel-09 { background-color: #BFC6F3; }
+#panel-010 { background-color: #DAF4FE; }
+#panel-011 { background-color: #E1FFC6; }
+#panel-012 { background-color: #E99C33; }
+#panel-013 { background-color: #F7D69A; }
+#panel-014 { background-color: #FA5320; }
+#panel-015 { background-color: #FEFFCF; }
+#panel-016 { background-color: #FFD0D9; }
+#panel-017 { background-color: #FFDBC7; }
+#panel-018 { background-color: #FFF7DB; }
             
-@for $i from 5 through 24 {
-  $col: $i*4;
-  #panel-0#{$i} { 
-    $translucent-red: rgba($col*$i, 0, 0, 0.5);
-    background-color:$translucent-red;
-  }
-}
+// IDs para aplicación de estanque
+#panel-10 { background-color: #0A5CFF; }
+#panel-11 { background-color: #0B5987; }
+#panel-12 { background-color: #3C61BD; }
+#panel-13 { background-color: #5E1300; }
+#panel-14 { background-color: #6CE354; }
+#panel-15 { background-color: #6FFFEF; }
+#panel-16 { background-color: #8C5000; }
+#panel-17 { background-color: #8D87D5; }
+#panel-18 { background-color: #11B3FF; }
+#panel-19 { background-color: #27A21D; }
+#panel-110 { background-color: #65F9A6; }
+#panel-111 { background-color: #873B3F; }
+#panel-112 { background-color: #007778; }
+#panel-113 { background-color: #9857AB; }
+#panel-114 { background-color: #A31500; }
+#panel-115 { background-color: #ABA8FF; }
+#panel-116 { background-color: #ADEBFF; }
+#panel-117 { background-color: #C5D8FF; }
+#panel-118 { background-color: #C8FFDC; }
+#panel-119 { background-color: #E47200; }
+#panel-120 { background-color: #F3D467; }
+#panel-121 { background-color: #F6F31E; }
+#panel-122 { background-color: #F29B87; }
+#panel-123 { background-color: #FFAE00; }
+#panel-124 { background-color: #FFE2BD; }
+
+
+// IDs para asientos 
+#panel-20 { background-color: #0A0A0A; }
+#panel-21 { background-color: #3C0001; }
+#panel-22 { background-color: #9E140B; }
+#panel-23 { background-color: #45291C; }
+#panel-24 { background-color: #742313; }
+#panel-25 { background-color: #C97054; }
+
+// IDs para manillas
+#panel-30 { background-color: #0A0A0A; }
+#panel-31 { background-color: #1D1D32; }
+#panel-32 { background-color: #2D0001; }
+#panel-33 { background-color: #4F1704; }
+#panel-34 { background-color: #9C6543; }
+#panel-35 { background-color: #303A09; }
+#panel-36 { background-color: #CB8A51; }

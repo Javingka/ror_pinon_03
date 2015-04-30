@@ -23,6 +23,8 @@
     <!-- CONTENT -->
     <% if content_for?(:home) %>
       <%= yield(:home) %>
+    <% elsif content_for?(:custom) %>
+      <%= yield(:custom) %>
     <% else %>
        <div class="container">
           <%= yield %>
