@@ -430,10 +430,15 @@ span.picture {
   box-sizing:border-box;
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
-  border:1px solid black;
+  border:0px solid black;
   position: absolute;
 }
-
+.capa-moto-ultima {
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  border:0px solid black;
+}
 
 /* Round corners */
 
