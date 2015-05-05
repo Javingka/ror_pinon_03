@@ -46,6 +46,7 @@ changeEstanque = (color) ->
           url: "fetch_estanque"
           data:
             selected_value: color
+            parte: 'estanque'
           dataType: "json"
           success: (data) ->
      #       alert data
@@ -57,12 +58,12 @@ changeEstanque = (color) ->
             $('#lat-est-app').fadeOut "fast", ->
               $(this).load ->
                 $(this).fadeIn("slow")
-            $('#lat-est-app').attr src: data.lat
+              $('#lat-est-app').attr src: data.lat
 
             $('#sup-est-app').fadeOut "fast", ->
               $(this).load ->
                 $(this).fadeIn("slow")
-            $('#sup-est-app').attr src: data.sup
+              $('#sup-est-app').attr src: data.sup
             # alert data + ' | ' + s 
   return
 
@@ -72,6 +73,7 @@ changeAplicacion = (color) ->
           url: "fetch_aplicacion"
           data:
             selected_value: color
+            parte: 'aplicacion'
           dataType: "json"
           success: (data) ->
             $('#per-apl-app').fadeOut "fast", ->
@@ -82,7 +84,9 @@ changeAplicacion = (color) ->
             $('#lat-apl-app').fadeOut "fast", ->
               $(this).load ->
                 $(this).fadeIn("slow")
-            $('#lat-apl-app').attr src: data.lat
+              $('#lat-apl-app').attr src: data.lat
+
+          # En la vista superior la aplicación del estanque no tiene visualización.
   return
 
 changeAsiento = (color) ->
@@ -91,6 +95,7 @@ changeAsiento = (color) ->
           url: "fetch_asiento"
           data:
             selected_value: color
+            parte: 'asiento'
           dataType: "json"
           success: (data) ->
             $('#per-asi-app').fadeOut "fast", ->
@@ -101,12 +106,12 @@ changeAsiento = (color) ->
             $('#lat-asi-app').fadeOut "fast", ->
               $(this).load ->
                 $(this).fadeIn("slow")
-            $('#lat-asi-app').attr src: data.lat
+              $('#lat-asi-app').attr src: data.lat
 
             $('#sup-asi-app').fadeOut "fast", ->
               $(this).load ->
                 $(this).fadeIn("slow")
-            $('#sup-asi-app').attr src: data.sup
+              $('#sup-asi-app').attr src: data.sup
   return
 
 changeManilla = (color) ->
@@ -115,6 +120,7 @@ changeManilla = (color) ->
           url: "fetch_manilla"
           data:
             selected_value: color
+            parte: 'manilla'
           dataType: "json"
           success: (data) ->
             $('#per-man-app').fadeOut "fast", ->

@@ -1,29 +1,40 @@
 class StaticPagesController < ApplicationController
+  before_action :logged_in_user, only: [:share]
 
   def home
     if logged_in?
       @micropost = current_user.microposts.build 
       @feed_items = current_user.feed.paginate(page: params[:page],:per_page => 10) # feed declared in user model.
     end
-    @userPinon = User.find_by(email: 'admin@pinon.cl') 
-    if !@userPinon.nil?  # I had to put this in order to pass the test 
-    @motos = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
-    end
+    @userPinon = User.find_by(email: 'admin@pinon.cl') #userPinon para mostrar las motos piñon
+#    if !@userPinon.nil?  # I had to put this in order to pass the test 
+#    @motos = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
+#    end
   end
 
   def customapp 
-    @userPinon = User.find_by(email: 'admin@pinon.cl') 
-    if !@userPinon.nil?  # I had to put this in order to pass the test 
-    @motos = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
+    if logged_in?
+#      if current_user.customapps.any?
+      # Se muestra la moto del usuatio actual
     end
+
+   # @userPinon = User.find_by(email: 'admin@pinon.cl') 
+   # if !@userPinon.nil?  # I had to put this in order to pass the test 
+    #  @motos = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
+   # end
+  end
+
+  def share
+    # To implement for record the data inside CustomApp
   end
 
   def fetch_estanque
     color =  params[:selected_value]
+    parte = params[:parte]
     color = color.upcase
-    @per_file = "custom_app/perspectiva/per_estanque_"+color+".png"
-    @lat_file = "custom_app/lateral/lat_estanque_"+color+".png"
-    @sup_file = "custom_app/superior/sup_estanque_"+color+".png"
+    @per_file = "custom_app/perspectiva/per_"+parte+"_"+color+".png"
+    @lat_file = "custom_app/lateral/lat_"+parte+"_"+color+".png"
+    @sup_file = "custom_app/superior/sup_"+parte+"_"+color+".png"
     per_r = ActionController::Base.helpers.asset_path @per_file
     lat_r = ActionController::Base.helpers.asset_path @lat_file
     sup_r = ActionController::Base.helpers.asset_path @sup_file
