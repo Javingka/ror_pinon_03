@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421010616) do
+ActiveRecord::Schema.define(version: 20150505203344) do
+
+  create_table "custom_apps", force: :cascade do |t|
+    t.string   "est_per_file"
+    t.string   "est_lat_file"
+    t.string   "est_sup_file"
+    t.string   "apl_per_file"
+    t.string   "apl_lat_file"
+    t.string   "apl_sup_file"
+    t.string   "asi_per_file"
+    t.string   "asi_lat_file"
+    t.string   "asi_sup_file"
+    t.string   "man_per_file"
+    t.string   "man_lat_file"
+    t.string   "man_sup_file"
+    t.string   "lla_per_file"
+    t.string   "lla_lat_file"
+    t.string   "lla_sup_file"
+    t.string   "foc_per_file"
+    t.string   "foc_lat_file"
+    t.string   "foc_sup_file"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "custom_apps", ["user_id", "created_at"], name: "index_custom_apps_on_user_id_and_created_at"
+  add_index "custom_apps", ["user_id"], name: "index_custom_apps_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"

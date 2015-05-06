@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :custom_apps, dependent: :destroy
   has_many :motos, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',

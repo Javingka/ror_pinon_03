@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  est_per_file: MyString
+  est_lat_file: MyString
+  est_sup_file: MyString
+  apl_per_file: MyString
+  apl_lat_file: MyString
+  apl_sup_file: MyString
+  asi_per_file: MyString
+  asi_lat_file: MyString
+  asi_sup_file: MyString
+  man_per_file: MyString
+  man_lat_file: MyString
+  man_sup_file: MyString
+  lla_per_file: MyString
+  lla_lat_file: MyString
+  lla_sup_file: MyString
+  foc_per_file: MyString
+  foc_lat_file: MyString
+  foc_sup_file: MyString
+  user_id: 
+
+two:
+  est_per_file: MyString
+  est_lat_file: MyString
+  est_sup_file: MyString
+  apl_per_file: MyString
+  apl_lat_file: MyString
+  apl_sup_file: MyString
+  asi_per_file: MyString
+  asi_lat_file: MyString
+  asi_sup_file: MyString
+  man_per_file: MyString
+  man_lat_file: MyString
+  man_sup_file: MyString
+  lla_per_file: MyString
+  lla_lat_file: MyString
+  lla_sup_file: MyString
+  foc_per_file: MyString
+  foc_lat_file: MyString
+  foc_sup_file: MyString
+  user_id: 

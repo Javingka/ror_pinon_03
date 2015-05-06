@@ -1,0 +1,2 @@
+module CustomAppsHelper
+end

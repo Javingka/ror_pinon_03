@@ -108,5 +108,13 @@
   </div>
 </div>
 
+<% if logged_in? %>
+<%= link_to "guardar cambios", '#', id:'guardar-cambios-customapp', class:'btn btn-lg btn-primary'%>
+<% else %>
+  <% store_location %>
+<%= link_to "registrate para guardar y compartir tu moto", save_changes_path, method: 'post', class:'btn btn-lg btn-primary'%>
+<% end %>
+
 <%= javascript_tag do %>
+  window.custompath = '<%= j custom_apps_url %>';
 <% end %>

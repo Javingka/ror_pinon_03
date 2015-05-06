@@ -14,6 +14,9 @@ $(document).ready ->
   ), ->
     $(this).find("img").stop().fadeTo "slow", 0.4
 
+  $('#guardar-cambios-customapp').click (event) ->
+    guardar_cambios()
+#    alert($("#per-est-app").attr('src'))
 
 $().ready ->
   $('.kwicks').kwicks
@@ -137,4 +140,34 @@ changeManilla = (color) ->
               $(this).load ->
                 $(this).fadeIn("slow")
             $('#sup-man-app').attr src: data.sup
+  return
+
+
+guardar_cambios = ->
+  $.ajax
+          type: 'POST'
+          url: custompath
+          data:
+            custom_app:
+              est_per_file: $("#per-est-app").attr('src')
+              est_lat_file: $("#lat-est-app").attr('src')
+              est_sup_file: $("#sup-est-app").attr('src')
+              apl_per_file: $("#per-apl-app").attr('src')
+              apl_lat_file: $("#lat-apl-app").attr('src')
+              apl_sup_file: $("#sup-apl-app").attr('src')
+              asi_per_file: $("#per-asi-app").attr('src')
+              asi_lat_file: $("#lat-asi-app").attr('src')
+              asi_sup_file: $("#sup-asi-app").attr('src')
+              man_per_file: $("#per-man-app").attr('src')
+              man_lat_file: $("#lat-man-app").attr('src')
+              man_sup_file: $("#sup-man-app").attr('src')
+              lla_per_file: $("#per-lla-app").attr('src')
+              lla_lat_file: $("#lat-lla-app").attr('src')
+              lla_sup_file: $("#sup-lla-app").attr('src')
+              foc_per_file: $("#per-foc-app").attr('src')
+              foc_lat_file: $("#lat-foc-app").attr('src')
+              foc_sup_file: $("#sup-foc-app").attr('src')
+          dataType: "json"
+          success: (data) ->
+     #       alert data
   return

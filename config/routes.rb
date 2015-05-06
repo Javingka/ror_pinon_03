@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	post 'fetch_aplicacion' => 'static_pages#fetch_aplicacion'
 	post 'fetch_asiento' => 'static_pages#fetch_asiento'
 	post 'fetch_manilla' => 'static_pages#fetch_manilla'
+	post 'save_changes' => 'static_pages#save_changes'
 	post 'contact_create' => 'static_pages#contact_create'
 	get 'contact' => 'static_pages#contact'
 	get 'signup' => 'users#new'
@@ -31,4 +32,5 @@ Rails.application.routes.draw do
   resources :motos,               only: [:index, :new, :create, :destroy, :edit, :update, :show]
   get 'index_pinon' => 'motos#indexPinon'
   
+  resources :custom_apps,          only: [:create, :destroy]
 end

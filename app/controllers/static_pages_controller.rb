@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :logged_in_user, only: [:share]
+  before_action :logged_in_user, only: [:share, :save_changes]
 
   def home
     if logged_in?
@@ -14,7 +14,11 @@ class StaticPagesController < ApplicationController
 
   def customapp 
     if logged_in?
-#      if current_user.customapps.any?
+      if current_user.custom_apps.any?
+        @customapp = current_user.custom_apps.first
+#        puts @customapp.est_lat_file
+      end
+
       # Se muestra la moto del usuatio actual
     end
 
@@ -25,7 +29,22 @@ class StaticPagesController < ApplicationController
   end
 
   def share
+
     # To implement for record the data inside CustomApp
+  end
+
+  def save_changes
+
+    if logged_in?
+     redirect_to customapp_path
+     # if current_user.customapps.count  >= 10
+     #   flash[:info] = "Has llegado al maximo de customizaciones, edita una de ellas para nuevas combinaciones"
+     #   redirect_to root_url #Cambiar para la url de edicion de customizaciones
+     # else
+     #   @customapp = current_user.customapps.build()
+     # end
+    end
+
   end
 
   def fetch_estanque

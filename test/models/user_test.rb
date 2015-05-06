@@ -80,6 +80,14 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "associated customapps should be destroyed" do
+    @user.save
+    @user.custom_apps.create!(est_per_file: 'custom_app/area_transparente.png', est_lat_file:'custom_app/area_transparente.png', est_sup_file:'custom_app/area_transparente.png', apl_per_file:'custom_app/area_transparente.png', apl_lat_file:'custom_app/area_transparente.png', apl_sup_file:'custom_app/area_transparente.png', asi_per_file:'custom_app/area_transparente.png', asi_lat_file:'custom_app/area_transparente.png', asi_sup_file:'custom_app/area_transparente.png', man_per_file:'custom_app/area_transparente.png', man_lat_file:'custom_app/area_transparente.png', man_sup_file:'custom_app/area_transparente.png', lla_per_file:'custom_app/area_transparente.png', lla_lat_file:'custom_app/area_transparente.png', lla_sup_file:'custom_app/area_transparente.png', foc_per_file:'custom_app/area_transparente.png', foc_lat_file:'custom_app/area_transparente.png', foc_sup_file:'custom_app/area_transparente.png')
+    assert_difference 'CustomApp.count', -1 do
+      @user.destroy
+    end
+  end
+
   test "should follow and unfollow a user" do
     javier = users(:javier)
     archer  = users(:archer)
