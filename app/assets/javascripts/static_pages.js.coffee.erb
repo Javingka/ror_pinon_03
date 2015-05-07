@@ -16,7 +16,16 @@ $(document).ready ->
 
   $('#guardar-cambios-customapp').click (event) ->
     guardar_cambios()
-#    alert($("#per-est-app").attr('src'))
+  $('#actualiza-customapp').click (event) ->
+    actualizar_custom()
+    #    alert($("#per-est-app").attr('src'))
+  if gon.archivos!=undefined
+    cargar_cambios gon.archivos
+
+  setTimeout (->
+    $("#flash").fadeTo 'slow', 0, ->
+      $("#flash").remove()
+    ), 5000
 
 $().ready ->
   $('.kwicks').kwicks
@@ -52,22 +61,9 @@ changeEstanque = (color) ->
             parte: 'estanque'
           dataType: "json"
           success: (data) ->
-     #       alert data
-            $('#per-est-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#per-est-app').attr src: data.per
-
-            $('#lat-est-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#lat-est-app').attr src: data.lat
-
-            $('#sup-est-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#sup-est-app').attr src: data.sup
-            # alert data + ' | ' + s 
+            nuevaParte '#per-est-app', data.per
+            nuevaParte '#lat-est-app', data.lat
+            nuevaParte '#sup-est-app', data.sup
   return
 
 changeAplicacion = (color) ->
@@ -79,16 +75,8 @@ changeAplicacion = (color) ->
             parte: 'aplicacion'
           dataType: "json"
           success: (data) ->
-            $('#per-apl-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#per-apl-app').attr src: data.per
-
-            $('#lat-apl-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#lat-apl-app').attr src: data.lat
-
+            nuevaParte '#per-apl-app', data.per
+            nuevaParte '#lat-apl-app', data.lat
           # En la vista superior la aplicación del estanque no tiene visualización.
   return
 
@@ -101,20 +89,9 @@ changeAsiento = (color) ->
             parte: 'asiento'
           dataType: "json"
           success: (data) ->
-            $('#per-asi-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#per-asi-app').attr src: data.per
-
-            $('#lat-asi-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#lat-asi-app').attr src: data.lat
-
-            $('#sup-asi-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#sup-asi-app').attr src: data.sup
+            nuevaParte '#per-asi-app', data.per
+            nuevaParte '#lat-asi-app', data.lat
+            nuevaParte '#sup-asi-app', data.sup
   return
 
 changeManilla = (color) ->
@@ -126,27 +103,21 @@ changeManilla = (color) ->
             parte: 'manilla'
           dataType: "json"
           success: (data) ->
-            $('#per-man-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-              $('#per-man-app').attr src: data.per
-
-            $('#lat-man-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-            $('#lat-man-app').attr src: data.lat
-
-            $('#sup-man-app').fadeOut "fast", ->
-              $(this).load ->
-                $(this).fadeIn("slow")
-            $('#sup-man-app').attr src: data.sup
+            nuevaParte '#per-man-app', data.per
+            nuevaParte '#lat-man-app', data.lat
+            nuevaParte '#sup-man-app', data.sup
   return
 
+nuevaParte = (parte, data_src) ->
+  $(parte).fadeOut "fast", ->
+    $(this).load ->
+      $(this).fadeIn("slow")
+    $(parte).attr src: data_src
 
 guardar_cambios = ->
   $.ajax
           type: 'POST'
-          url: custompath
+          url: custompath #variable definida en _customapp.html.erb con el path para crear una nueva CustomApp 
           data:
             custom_app:
               est_per_file: $("#per-est-app").attr('src')
@@ -169,5 +140,49 @@ guardar_cambios = ->
               foc_sup_file: $("#sup-foc-app").attr('src')
           dataType: "json"
           success: (data) ->
+             window.location = data.location
      #       alert data
   return
+
+actualizar_custom = ->
+  $.ajax
+          type: 'PATCH'
+          url: gon.update_path # custom_actualiza_path #variable definida en _customapp.html.erb con el path para crear una nueva CustomApp 
+          data:
+            custom_app:
+              est_per_file: $("#per-est-app").attr('src')
+              est_lat_file: $("#lat-est-app").attr('src')
+              est_sup_file: $("#sup-est-app").attr('src')
+              apl_per_file: $("#per-apl-app").attr('src')
+              apl_lat_file: $("#lat-apl-app").attr('src')
+              apl_sup_file: $("#sup-apl-app").attr('src')
+              asi_per_file: $("#per-asi-app").attr('src')
+              asi_lat_file: $("#lat-asi-app").attr('src')
+              asi_sup_file: $("#sup-asi-app").attr('src')
+              man_per_file: $("#per-man-app").attr('src')
+              man_lat_file: $("#lat-man-app").attr('src')
+              man_sup_file: $("#sup-man-app").attr('src')
+              lla_per_file: $("#per-lla-app").attr('src')
+              lla_lat_file: $("#lat-lla-app").attr('src')
+              lla_sup_file: $("#sup-lla-app").attr('src')
+              foc_per_file: $("#per-foc-app").attr('src')
+              foc_lat_file: $("#lat-foc-app").attr('src')
+              foc_sup_file: $("#sup-foc-app").attr('src')
+          dataType: "json"
+          success: (data) ->
+             window.location = data.location
+  return
+
+cargar_cambios = (data) ->
+  nuevaParte '#per-est-app', data['est_pf']
+  nuevaParte '#lat-est-app', data['est_lf']
+  nuevaParte '#sup-est-app', data['est_sf']
+  nuevaParte '#per-apl-app', data['apl_pf']
+  nuevaParte '#lat-apl-app', data['apl_lf']
+  nuevaParte '#per-asi-app', data['asi_pf']
+  nuevaParte '#lat-asi-app', data['asi_lf']
+  nuevaParte '#sup-asi-app', data['asi_sf']
+  nuevaParte '#per-man-app', data['man_pf']
+  nuevaParte '#lat-man-app', data['man_lf']
+  nuevaParte '#sup-man-app', data['man_sf']
+

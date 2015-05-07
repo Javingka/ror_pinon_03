@@ -1,8 +1,23 @@
 
-<% content_for :custom do %>
 <!-- APLICACIÓN CUSTOMIZACIÓN -->
-<div class="container">
-      <%= render 'static_pages/customapp' %>
+<% content_for :custom do %>
+  <div class="container">
+    <%= render 'static_pages/custombuttons' %>
+  </div>
+<br>
+  <div class="container">
+    <%= render 'static_pages/customdisplays' %>
+  </div>
+  
+  <div class="container">
+    <%= render 'static_pages/customlinks' %>
+  </div>
+
+  <br>
+  <% if logged_in? %>
+    <div class="container">
+      <%= render 'static_pages/miscustoms' %>
     </div>
+  <% end %>
 
 <% end %>

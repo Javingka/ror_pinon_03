@@ -1,0 +1,48 @@
+<% if !@customapp.nil? %>
+  <% capp = @customapp %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="plantilla-moto">
+      <%= image_tag( capp.est_per_file, alt: "per-est-app", style:'max-width:100%; height:auto;', id:'per-est-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag(capp.apl_per_file, alt: "per-apl-app", style:'max-width:100%; height:auto;', id:'per-apl-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag(capp.asi_per_file, alt: "per-asi-app", style:'max-width:100%; height:auto;', id:'per-asi-app-'+capp.id.to_s, class:'capa-moto' )%> 
+      <%= image_tag(capp.man_per_file, alt: "per-man-app", style:'max-width:100%; height:auto;', id:'per-man-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag("custom_app/perspectiva/per_plantilla.png", alt: "per-pla-app", style:'max-width:100%; height:auto;', id:'per-pla-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto-ultima')%>
+    </div>
+  </div>
+ </div> 
+ <div class="row">
+    <div class="col-md-12">
+      <div class="plantilla-moto">
+      <%= image_tag(capp.est_lat_file, alt: "lat-est-app", style:'max-width:100%; height:auto;', id:'lat-est-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag(capp.apl_lat_file, alt: "lat-apl-app", style:'max-width:100%; height:auto;', id:'lat-apl-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag(capp.asi_lat_file, alt: "lat-asi-app", style:'max-width:100%; height:auto;', id:'lat-asi-app-'+capp.id.to_s, class:'capa-moto' )%> 
+      <%= image_tag(capp.man_lat_file, alt: "lat-man-app", style:'max-width:100%; height:auto;', id:'lat-man-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag("custom_app/lateral/lat_plantilla.png", alt: "lat-pla-app", style:'max-width:100%; height:auto;', id:'lat-pla-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto-ultima')%>
+    </div>
+  </div>
+ </div> 
+ <div class="row">
+    <div class="col-md-12">
+      <div class="plantilla-moto">
+      <%= image_tag(capp.est_sup_file, alt: "sup-est-app", style:'max-width:100%; height:auto;', id:'sup-est-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag(capp.apl_sup_file, alt: "sup-apl-app", style:'max-width:100%; height:auto;', id:'sup-apl-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag(capp.asi_sup_file, alt: "sup-asi-app", style:'max-width:100%; height:auto;', id:'sup-asi-app-'+capp.id.to_s, class:'capa-moto' )%> 
+      <%= image_tag(capp.man_sup_file, alt: "sup-man-app", style:'max-width:100%; height:auto;', id:'sup-man-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag("custom_app/superior/sup_plantilla.png", alt: "sup-pla-app", style:'max-width:100%; height:auto;', id:'sup-pla-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto-ultima')%>
+    </div>
+  </div>
+ </div> 
+<% end %>
+
+<% if current_user?(capp.user) %>
+  <p class="center">
+   <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
+   <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
+  </p>
+<% else %>
+   <%= link_to "Customiza tu moto",  customapp_path, class:'btn btn-dafault'%>
+<% end %>

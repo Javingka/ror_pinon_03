@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    customapp_out if customapp_in?
     log_out if logged_in?
     redirect_to root_url
   end

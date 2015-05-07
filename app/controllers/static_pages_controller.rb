@@ -13,25 +13,25 @@ class StaticPagesController < ApplicationController
   end
 
   def customapp 
+    gon.archivos 
+    gon.update_path
     if logged_in?
       if current_user.custom_apps.any?
-        @customapp = current_user.custom_apps.first
+        @customapp = current_user.custom_apps
+        
+        if customapp_in?
+          crea_gon_object() # crea objeto gon, con los datos de color de las partes de la moto
+          gon.update_path = custom_app_path(@customapp)  
+        end
 #        puts @customapp.est_lat_file
       end
-
-      # Se muestra la moto del usuatio actual
     end
-
-   # @userPinon = User.find_by(email: 'admin@pinon.cl') 
-   # if !@userPinon.nil?  # I had to put this in order to pass the test 
-    #  @motos = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
-   # end
   end
 
   def share
-
     # To implement for record the data inside CustomApp
-  end
+  end 
+ 
 
   def save_changes
 
@@ -112,6 +112,35 @@ class StaticPagesController < ApplicationController
     flash[:info] = "Tu mensaje ha sido enviado!"
     redirect_to root_url
   end
+
+  private
+
+    def crea_gon_object
+           @est_pf = current_custom.est_per_file #archivos del estanque
+          @est_lf = current_custom.est_lat_file
+          @est_sf = current_custom.est_sup_file
+          @apl_pf = current_custom.apl_per_file #archivos de la aplicacion del estanque
+          @apl_lf = current_custom.apl_lat_file
+          @apl_sf = current_custom.apl_sup_file
+          @asi_pf = current_custom.asi_per_file #archivos del asiento 
+          @asi_lf = current_custom.asi_lat_file
+          @asi_sf = current_custom.asi_sup_file
+          @man_pf = current_custom.man_per_file #manillar
+          @man_lf = current_custom.man_lat_file
+          @man_sf = current_custom.man_sup_file
+          @lla_pf = current_custom.lla_per_file # llantas
+          @lla_lf = current_custom.lla_lat_file
+          @lla_sf = current_custom.lla_sup_file
+          @foc_pf = current_custom.foc_per_file # foco
+          @foc_lf = current_custom.foc_lat_file
+          @foc_sf = current_custom.foc_sup_file
+          
+          gon.archivos = { est_pf: @est_pf, est_lf: @est_lf, est_sf: @est_sf,
+                           apl_pf: @apl_pf, apl_lf: @apl_lf, apl_sf: @apl_sf,
+                           asi_pf: @asi_pf, asi_lf: @asi_lf, asi_sf: @asi_sf,
+                           man_pf: @man_pf, man_lf: @man_lf, man_sf: @man_sf} 
+                          # Falta colocar la indo de llantay foco
+   end
 
 end
 

@@ -1,0 +1,26 @@
+
+<h1> Mis customizaciones </h1>
+
+<% if !@customapp.nil? %>
+  <div class="row">
+  <% @customapp.each do |capp| %>
+    <div class="col-md-2">
+      <div class="plantilla-moto">
+      <%= image_tag( capp.est_per_file, alt: "per-est-app", style:'max-width:100%; height:auto;', id:'per-est-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag(capp.apl_per_file, alt: "per-apl-app", style:'max-width:100%; height:auto;', id:'per-apl-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag(capp.asi_per_file, alt: "per-asi-app", style:'max-width:100%; height:auto;', id:'per-asi-app-'+capp.id.to_s, class:'capa-moto' )%> 
+      <%= image_tag(capp.man_per_file, alt: "per-man-app", style:'max-width:100%; height:auto;', id:'per-man-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag("custom_app/perspectiva/per_plantilla.png", alt: "per-pla-app", style:'max-width:100%; height:auto;', id:'per-pla-app-'+capp.id.to_s, class:'capa-moto' )%>
+      <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto-ultima')%>
+    </div>
+    <% if current_user?(capp.user) %>
+      <p class="center">
+      <%= link_to "ver", custom_app_path(:id => capp.id) %> | 
+      <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
+      <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
+    </p>
+    <% end %>
+  </div>
+  <% end %>
+ </div> 
+<% end %>
