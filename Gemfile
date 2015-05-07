@@ -13,7 +13,11 @@ gem 'carrierwave',             '0.10.0'
 gem 'mini_magick',             '3.8.0'
 gem 'fog',                     '1.23.0'
 
+# gon para la comunicación entre Rails y Javascript
 gem 'gon'
+
+# gem para incluir 'share' a redes sociales
+gem 'social-share-button'
 
 # to paginate. in this case the user list
 gem 'will_paginate',           '3.0.7'

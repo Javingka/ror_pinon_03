@@ -1,3 +1,8 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= social_share_button_tag("Moto Custom", :popup => "true") %>
+  </div>
+</div>
 <% if !@customapp.nil? %>
   <% capp = @customapp %>
   <div class="row">
@@ -38,11 +43,14 @@
  </div> 
 <% end %>
 
+
+
+
 <% if current_user?(capp.user) %>
   <p class="center">
    <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
    <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
   </p>
 <% else %>
-   <%= link_to "Customiza tu moto",  customapp_path, class:'btn btn-dafault'%>
+   <%= link_to "Customiza tu moto",  customapp_path, method: :get,  class:'btn btn-dafault'%>
 <% end %>
