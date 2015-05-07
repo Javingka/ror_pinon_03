@@ -108,7 +108,7 @@ class StaticPagesController < ApplicationController
 
   def contact_create
     @contacto = params[:contact]
-    ContactMailer.contact_form(@contacto).deliver
+    ContactMailer.delay.contact_form(@contacto)
     flash[:info] = "Tu mensaje ha sido enviado!"
     redirect_to root_url
   end
@@ -116,7 +116,7 @@ class StaticPagesController < ApplicationController
   private
 
     def crea_gon_object
-           @est_pf = current_custom.est_per_file #archivos del estanque
+          @est_pf = current_custom.est_per_file #archivos del estanque
           @est_lf = current_custom.est_lat_file
           @est_sf = current_custom.est_sup_file
           @apl_pf = current_custom.apl_per_file #archivos de la aplicacion del estanque
