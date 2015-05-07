@@ -37,7 +37,6 @@ class CustomAppsController < ApplicationController
   end
 
   def update
-    puts "PRINT: "+current_custom.update(customapp_params).to_s
     respond_to do |format|
       if current_custom.update(customapp_params)
         flash[:success] = "Cambios guardados!"
