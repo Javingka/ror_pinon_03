@@ -1,5 +1,5 @@
 class CustomAppsController < ApplicationController
-  require 'rmagick'
+  include CarrierWave::RMagick
   before_action :correct_user, only: :destroy
   before_action :evalua_maximo, only: :create
 
