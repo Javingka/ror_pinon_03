@@ -23,7 +23,8 @@ gem 'delayed_job_active_record'
 gem 'gon'
 
 # gem para incluir 'share' a redes sociales
-gem 'social-share-button'
+gem 'social-share-button', ref: '1f95d81', github: 'vrybas/social-share-button'
+# gem 'social-share-button'
 
 # to paginate. in this case the user list
 gem 'will_paginate',           '3.0.7'

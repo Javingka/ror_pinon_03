@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/vrybas/social-share-button.git
+  revision: 1f95d81a1f679d6affc93e0ae925b2f08c95b819
+  ref: 1f95d81
+  specs:
+    social-share-button (0.1.6)
+      coffee-rails
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -235,9 +244,6 @@ GEM
       rdoc (~> 4.0)
     shellany (0.0.1)
     slop (3.6.0)
-    social-share-button (0.1.8)
-      coffee-rails
-      sass-rails
     spring (1.1.3)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -297,7 +303,7 @@ DEPENDENCIES
   rmagick
   sass-rails (~> 5.0.1)
   sdoc (~> 0.4.0)
-  social-share-button
+  social-share-button!
   spring (= 1.1.3)
   sqlite3 (= 1.3.9)
   turbolinks
