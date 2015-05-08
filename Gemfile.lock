@@ -221,7 +221,7 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     request_store (1.1.0)
-    rmagick (2.13.2)
+    rmagick (2.15.0)
     ruby-progressbar (1.7.5)
     sass (3.4.13)
     sass-rails (5.0.1)
