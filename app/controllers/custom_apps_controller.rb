@@ -1,4 +1,5 @@
 class CustomAppsController < ApplicationController
+  require 'RMagick'
   before_action :correct_user, only: :destroy
   before_action :evalua_maximo, only: :create
 
