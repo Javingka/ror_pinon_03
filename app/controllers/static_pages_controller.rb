@@ -37,12 +37,6 @@ class StaticPagesController < ApplicationController
 
     if logged_in?
      redirect_to customapp_path
-     # if current_user.customapps.count  >= 10
-     #   flash[:info] = "Has llegado al maximo de customizaciones, edita una de ellas para nuevas combinaciones"
-     #   redirect_to root_url #Cambiar para la url de edicion de customizaciones
-     # else
-     #   @customapp = current_user.customapps.build()
-     # end
     end
 
   end

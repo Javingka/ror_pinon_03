@@ -20,10 +20,6 @@ class CustomAppsController < ApplicationController
           :location => url_for(:controller => 'static_pages', :action => 'customapp', :method => 'get')
         }}
       end
-#      render js: "window.location.pathname='#{customapp_path}'"
-#      render :js => "window.location = '/static_pages/customapp'"
-#      render :json => { :redirec_to => customapp_path } 
-#      redirect_to customapp_path
     else
       render 'static_pages/home'
     end
@@ -42,8 +38,7 @@ class CustomAppsController < ApplicationController
     respond_to do |format|
       if current_custom.update(customapp_params)
         crea_imagen(current_custom.est_per_file, current_custom.apl_per_file, current_custom.asi_per_file, current_custom.man_per_file, "custom_app/perspectiva/per_plantilla.png")
-
-      flash[:success] = "Customización guardada!"
+        flash[:success] = "Customización guardada!"
         flash[:success] = "Cambios guardados!"
         format.html { redirect_to customapp_path }
         format.json { render :json => {:location => url_for(:controller => 'static_pages', :action => 'customapp') }}
@@ -106,23 +101,34 @@ class CustomAppsController < ApplicationController
       capa_1 = capa_1.quantize(256, Magick::GRAYColorspace).contrast(true)
       capa_1.write("imagem_temporal_moto_byn.jpg")
     end
+  
+    def get_color_from_path (p)
+      color_est = /(_)([0-9A-F])+/.match(p)
+      color_est = /([0-9A-F])+/.match(color_est.to_s)
+    end 
 
     def crea_imagen(est, apl, asi, man, base)
-      est = "#{Rails.root}/app/assets/images/custom_app/test1.jpg"
-      puts est
-      path_img_est = est # image_path("per_estanque_E1FFC6.png")
-      path_img_apl = apl# "perspectiva/per_aplicacion_ABA8FF.png"
-      path_img_asi = asi# "perspectiva/per_asiento_45291C.png"
-      path_img_man = man# "perspectiva/per_manilla_9C6543.png"
-      path_img_base = base# "perspectiva/per_plantilla.png"
-      capa_1 = Magick::Image.read( path_img_est ).first
-      capa_2 = Magick::Image.read( path_img_apl ).first
-      capa_3 = Magick::Image.read( path_img_asi ).first
-      capa_4 = Magick::Image.read( path_img_man ).first
-      capa_5 = Magick::Image.read( path_img_base ).first
+      color_est = get_color_from_path est
+      color_apl = get_color_from_path apl
+      color_asi = get_color_from_path asi
+      color_man = get_color_from_path man
+      est = "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_estanque_"+color_est.to_s+".png"
+      apl = "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_aplicacion_"+color_apl.to_s+".png"
+      asi = "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_asiento_"+color_asi.to_s+".png"
+      man = "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_manilla_"+color_man.to_s+".png"
+      base =  "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_plantilla.png"
+      capa_1 = Magick::Image.read( est ).first
+      capa_2 = Magick::Image.read( apl ).first
+      capa_3 = Magick::Image.read( asi ).first
+      capa_4 = Magick::Image.read( man ).first
+      capa_5 = Magick::Image.read( base ).first
       capa_1.composite!(capa_2.composite!(capa_3.composite!( capa_4.composite!( capa_5,0,0, Magick::OverCompositeOp), 0,0, Magick::OverCompositeOp ), 0,0, Magick::OverCompositeOp ), 0,0, Magick::OverCompositeOp ) 
-      capa_1.write("assets/tenporal_image/imagem_temporal_moto.jpg")
-      @customapp.picture_url("assets/tenporal_image/imagem_temporal_moto.jpg")      
+      capa_1.write("app/assets/images/imagem_temporal_moto.jpg")
+
+      File.open(File.join(Rails.root,"/app/assets/images/imagem_temporal_moto.jpg")) do |f|
+         current_custom.picture = f
+      end
+      current_custom.save!
     end
 
 end

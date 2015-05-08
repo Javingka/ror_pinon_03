@@ -5,6 +5,7 @@
 </div>
 <% if !@customapp.nil? %>
   <% capp = @customapp %>
+  <%= image_tag capp.picture.url if capp.picture? %>
   <div class="row">
     <div class="col-md-12">
       <div class="plantilla-moto">
