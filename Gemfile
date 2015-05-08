@@ -13,6 +13,9 @@ gem 'carrierwave',             '0.10.0'
 gem 'mini_magick',             '3.8.0'
 gem 'fog',                     '1.23.0'
 
+# gem para manipulación de imagenes con MagicImage
+gem 'rmagick'
+
 # gem para incluir un worker haciendo trabajo por el lado del servidor
 gem 'delayed_job_active_record'
 
