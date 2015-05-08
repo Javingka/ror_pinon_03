@@ -1,20 +1,17 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
     <%= social_share_button_tag("Moto Custom", :popup => "true") %>
-  <%= image_tag @customapp.picture.url if capp.picture? %>
   </div>
 </div>
+
 <% if !@customapp.nil? %>
   <% capp = @customapp %>
   <div class="row">
     <div class="col-md-12">
       <div class="plantilla-moto">
-      <%= image_tag( capp.est_per_file, alt: "per-est-app", style:'max-width:100%; height:auto;', id:'per-est-app-'+capp.id.to_s, class:'capa-moto' )%>
-      <%= image_tag(capp.apl_per_file, alt: "per-apl-app", style:'max-width:100%; height:auto;', id:'per-apl-app-'+capp.id.to_s, class:'capa-moto' )%>
-      <%= image_tag(capp.asi_per_file, alt: "per-asi-app", style:'max-width:100%; height:auto;', id:'per-asi-app-'+capp.id.to_s, class:'capa-moto' )%> 
-      <%= image_tag(capp.man_per_file, alt: "per-man-app", style:'max-width:100%; height:auto;', id:'per-man-app-'+capp.id.to_s, class:'capa-moto' )%>
-      <%= image_tag("custom_app/perspectiva/per_plantilla.png", alt: "per-pla-app", style:'max-width:100%; height:auto;', id:'per-pla-app-'+capp.id.to_s, class:'capa-moto' )%>
-      <%= image_tag("custom_app/area_transparente.png", alt: "test moto img", style:'max-width:100%; height:auto;', class:'capa-moto-ultima')%>
+
+  <%= image_tag @customapp.picture.url if @customapp.picture? %>
+
     </div>
   </div>
  </div> 
