@@ -14,6 +14,9 @@ $(document).ready ->
   ), ->
     $(this).find("img").stop().fadeTo "slow", 0.4
 
+  $('#ver-motocustom').click (event) ->
+
+
   $('#guardar-cambios-customapp').click (event) ->
     guardar_cambios()
   $('#actualiza-customapp').click (event) ->
@@ -143,6 +146,9 @@ guardar_cambios = ->
              window.location = data.location
      #       alert data
   return
+
+
+
 
 actualizar_custom = ->
   $.ajax
