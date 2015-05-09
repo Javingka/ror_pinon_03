@@ -27,8 +27,8 @@
     <%= link_to 'Share on Facebook', '#', :class => "fb-like", data:{:share=>'true', :width=>'450', :show => {:faces=>'true'} }  %>
     <%= facebook_share_once %>
   </div>
-  <div class="col-md-4 ">
-    <%= social_share_button_tag("Moto Custom", :url => custom_app_path(@customapp.id), :image => @customapp.picture.url) %>
+  <div class="col-md-4 col-md-offset-1 ">
+    <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %>
   </div>
 </div>
 
