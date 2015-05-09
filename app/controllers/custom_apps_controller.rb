@@ -77,7 +77,7 @@ class CustomAppsController < ApplicationController
     def evalua_maximo
       puts  "cantidad: "+current_user.custom_apps.count.to_s
       if current_user.custom_apps.count  >= 6
-        flash[:info] = "Lo siento, has llegado al máximo de customizaciones. Edita o elimina una de tu lista."
+        flash[:info] = "Lo siento, has llegado al máximo de customizaciones. Elimina una de tu lista para guardar una nueva."
         respond_to do |format|
         format.html { redirect_to customapp_path }
         format.json { render :json => {
