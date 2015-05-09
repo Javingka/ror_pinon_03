@@ -3,9 +3,11 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
 
-    <meta property="og:title" content="Taller Piñon" />
-    <meta property="og:image" content="<%= current_custom.picture.url %>" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <% if customapp_in? %>
+       <meta property="og:title" content="Taller Piñon" />
+       <meta property="og:image" content="<%= current_custom.picture.url %>" />
+       <meta property="og:image:type" content="image/jpeg" />
+    <% end %>
 
     <%= include_gon %>
 
