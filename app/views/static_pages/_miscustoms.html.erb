@@ -15,7 +15,7 @@
     </div>
     <% if current_user?(capp.user) %>
       <p class="center">
-      <%= link_to "ver", custom_app_path(:id => capp.id), id: 'ver-motocustom' %> | 
+      <%= link_to "ver", custom_app_path(:id => capp.id), method: :get, id: 'ver-motocustom' %> | 
       <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
       <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
     </p>
