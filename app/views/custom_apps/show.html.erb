@@ -22,6 +22,7 @@
   <%= image_tag @customapp.picture.url if @customapp.picture? %>
 <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %>
 <%= social_share_button_tag("Moto Custom tipo url", :url => @customapp.picture.url) %>
+<%= social_share_button_tag("Moto Custom ", :url => custom_app_path(@customapp.id) %>
     </div>
   </div>
  </div> 
