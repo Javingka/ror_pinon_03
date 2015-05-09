@@ -10,12 +10,10 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
 
-<% if customapp_in? %>
     <meta property="og:title" content="MotoCustom" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image" content="<%= current_custom.picture.url %>" />
     <meta property="og:image:url" content="<%= current_custom.picture.url %>" />
-<% end %>
 
   </head>
   <body style="background-color: black;">

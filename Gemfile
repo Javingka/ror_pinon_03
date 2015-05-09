@@ -16,8 +16,6 @@ gem 'fog',                     '1.23.0'
 # gem para manipulación de imagenes con MagicImage
 gem 'rmagick'
 
-gem 'facebook_share'
-
 # gem para incluir un worker haciendo trabajo por el lado del servidor
 gem 'delayed_job_active_record'
 
