@@ -5,8 +5,10 @@
 
     <% if customapp_in? %>
        <meta property="og:title" content="Taller Piñon" />
+       <meta property="og:type" content="website" />
        <meta property="og:image" content="<%= current_custom.picture.url %>" />
        <meta property="og:image:type" content="image/jpeg" />
+       <meta property="og:description"  content="Moto customizada por <%= current_user.name%> " />
     <% end %>
 
     <%= include_gon %>
