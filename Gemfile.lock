@@ -1,9 +1,8 @@
 GIT
-  remote: git://github.com/vrybas/social-share-button.git
-  revision: 1f95d81a1f679d6affc93e0ae925b2f08c95b819
-  ref: 1f95d81
+  remote: git://github.com/javingka/social-share-button.git
+  revision: 00102bf2efdcde2369acca6ddc24cb62ccfabe86
   specs:
-    social-share-button (0.1.6)
+    social-share-button (0.1.9)
       coffee-rails
       sass-rails
 
