@@ -36,6 +36,10 @@
       <%= yield(:home) %>
     <% elsif content_for?(:custom) %>
       <%= yield(:custom) %>
+    <% elsif content_for?(:show_custom) %>
+       <div class="container">
+        <%= yield(:show_custom) %>
+       </div>
     <% else %>
        <div class="container">
           <%= yield %>
