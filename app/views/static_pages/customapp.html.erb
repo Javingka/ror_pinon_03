@@ -2,21 +2,22 @@
 <!-- APLICACIÓN CUSTOMIZACIÓN -->
 <% content_for :custom do %>
   <div class="container">
-    <%= render 'static_pages/custombuttons' %>
+    <%= render 'static_pages/customapp_partials/custombuttons' %>
   </div>
 <br>
   <div class="container">
-    <%= render 'static_pages/customdisplays' %>
+    <%= render 'static_pages/customapp_partials/customdisplays_ax4' %>
   </div>
+
   
   <div class="container">
-    <%= render 'static_pages/customlinks' %>
+    <%= render 'static_pages/customapp_partials/customlinks' %>
   </div>
 
   <br>
   <% if logged_in? %>
     <div class="container">
-      <%= render 'static_pages/miscustoms' %>
+      <%= render 'static_pages/customapp_partials/miscustoms' %>
     </div>
   <% end %>
 
