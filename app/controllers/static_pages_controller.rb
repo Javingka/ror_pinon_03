@@ -42,55 +42,19 @@ class StaticPagesController < ApplicationController
 
   end
 
-  def fetch_estanque
-    color =  params[:selected_value]
+  def fetch_pieza
+    color =  params[:color]
     parte = params[:parte]
+    modelo = params[:modelo]
     color = color.upcase
-    @per_file = "custom_app/perspectiva/per_"+parte+"_"+color+".png"
-    @lat_file = "custom_app/lateral/lat_"+parte+"_"+color+".png"
-    @sup_file = "custom_app/superior/sup_"+parte+"_"+color+".png"
+    @per_file = "custom_app/"+modelo+"/perspectiva/per_"+parte+"_"+color+".png"
+    @lat_file = "custom_app/"+modelo+"/lateral/lat_"+parte+"_"+color+".png"
+    @sup_file = "custom_app/"+modelo+"/superior/sup_"+parte+"_"+color+".png"
     per_r = ActionController::Base.helpers.asset_path @per_file
     lat_r = ActionController::Base.helpers.asset_path @lat_file
     sup_r = ActionController::Base.helpers.asset_path @sup_file
     render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
   end
-
-  def fetch_aplicacion
-    color =  params[:selected_value]
-    color = color.upcase
-    @per_file = "custom_app/perspectiva/per_aplicacion_"+color+".png"
-    @lat_file = "custom_app/lateral/lat_aplicacion_"+color+".png"
-    @sup_file = "custom_app/superior/sup_aplicacion_"+color+".png"
-    per_r = ActionController::Base.helpers.asset_path @per_file
-    lat_r = ActionController::Base.helpers.asset_path @lat_file
-    sup_r = ActionController::Base.helpers.asset_path @sup_file
-    render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
-  end
-
-  def fetch_asiento
-    color =  params[:selected_value]
-    color = color.upcase
-    @per_file = "custom_app/perspectiva/per_asiento_"+color+".png"
-    @lat_file = "custom_app/lateral/lat_asiento_"+color+".png"
-    @sup_file = "custom_app/superior/sup_asiento_"+color+".png"
-    per_r = ActionController::Base.helpers.asset_path @per_file
-    lat_r = ActionController::Base.helpers.asset_path @lat_file
-    sup_r = ActionController::Base.helpers.asset_path @sup_file
-    render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
-  end
-
-  def fetch_manilla
-    color =  params[:selected_value]
-    color = color.upcase
-    @per_file = "custom_app/perspectiva/per_manilla_"+color+".png"
-    @lat_file = "custom_app/lateral/lat_manilla_"+color+".png"
-    @sup_file = "custom_app/superior/sup_manilla_"+color+".png"
-    per_r = ActionController::Base.helpers.asset_path @per_file
-    lat_r = ActionController::Base.helpers.asset_path @lat_file
-    sup_r = ActionController::Base.helpers.asset_path @sup_file
-    render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
-  end
-
 
   def help
   end

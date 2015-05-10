@@ -14,11 +14,11 @@ $(document).ready ->
   ), ->
     $(this).find("img").stop().fadeTo "slow", 0.4
 
-  $('#ver-motocustom').click (event) ->
+  $('#ver-motocustom').click (event) ->'estanque'
 
 
-  $('#guardar-cambios-customapp').click (event) ->
-    guardar_cambios()
+  $('#guardar-nueva-customapp').click (event) ->
+    guardar_nueva()
   $('#actualiza-customapp').click (event) ->
     actualizar_custom()
     #    alert($("#per-est-app").attr('src'))
@@ -43,72 +43,32 @@ $().ready ->
 
     switch parte
      when '0'
-       changeEstanque colhex
+       changePieza colhex,'estanque'
      when '1'
-       changeAplicacion colhex
+       changePieza colhex,'aplicacion'
      when '2'
-       changeAsiento colhex
+       changePieza colhex,'asiento'
      when '3'
-       changeManilla colhex
+       changePieza colhex,'manilla'
 
     #Usando la clase RGB color incluida en assets
     return
   return
 
-changeEstanque = (color) ->
+changePieza = (color, parte) ->
   $.ajax
           type: 'POST'
-          url: "fetch_estanque"
+          url: "fetch_pieza"
           data:
-            selected_value: color
-            parte: 'estanque'
+            color: color
+            parte: parte 
+            modelo: modelo
           dataType: "json"
           success: (data) ->
-            nuevaParte '#per-est-app', data.per
-            nuevaParte '#lat-est-app', data.lat
-            nuevaParte '#sup-est-app', data.sup
-  return
-
-changeAplicacion = (color) ->
-  $.ajax
-          type: 'POST'
-          url: "fetch_aplicacion"
-          data:
-            selected_value: color
-            parte: 'aplicacion'
-          dataType: "json"
-          success: (data) ->
-            nuevaParte '#per-apl-app', data.per
-            nuevaParte '#lat-apl-app', data.lat
-          # En la vista superior la aplicación del estanque no tiene visualización.
-  return
-
-changeAsiento = (color) ->
-  $.ajax
-          type: 'POST'
-          url: "fetch_asiento"
-          data:
-            selected_value: color
-            parte: 'asiento'
-          dataType: "json"
-          success: (data) ->
-            nuevaParte '#per-asi-app', data.per
-            nuevaParte '#lat-asi-app', data.lat
-            nuevaParte '#sup-asi-app', data.sup
-  return
-
-changeManilla = (color) ->
-  $.ajax
-          type: 'POST'
-          url: "fetch_manilla"
-          data:
-            selected_value: color
-            parte: 'manilla'
-          dataType: "json"
-          success: (data) ->
-            nuevaParte '#per-man-app', data.per
-            nuevaParte '#lat-man-app', data.lat
-            nuevaParte '#sup-man-app', data.sup
+            par = parte.substring(0, 3)
+            nuevaParte '#per-'+par+'-app', data.per
+            nuevaParte '#lat-'+par+'-app', data.lat
+            nuevaParte '#sup-'+par+'-app', data.sup
   return
 
 nuevaParte = (parte, data_src) ->
@@ -117,7 +77,8 @@ nuevaParte = (parte, data_src) ->
       $(this).fadeIn("slow")
     $(parte).attr src: data_src
 
-guardar_cambios = ->
+guardar_nueva = ->
+  alert modelo
   $.ajax
           type: 'POST'
           url: custompath #variable definida en _customapp.html.erb con el path para crear una nueva CustomApp 
@@ -141,6 +102,7 @@ guardar_cambios = ->
               foc_per_file: $("#per-foc-app").attr('src')
               foc_lat_file: $("#lat-foc-app").attr('src')
               foc_sup_file: $("#sup-foc-app").attr('src')
+              modelo: modelo
           dataType: "json"
           success: (data) ->
              window.location = data.location

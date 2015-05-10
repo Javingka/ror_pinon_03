@@ -22,7 +22,7 @@ class CustomAppsController < ApplicationController
         }}
       end
     else
-      render 'static_pages/home'
+      redirect_to customapp_path
     end
   end
 
@@ -66,7 +66,7 @@ class CustomAppsController < ApplicationController
                                         :man_per_file,:man_lat_file,:man_sup_file,
                                         :lla_per_file,:lla_lat_file,:lla_sup_file,
                                         :foc_per_file,:foc_lat_file,:foc_sup_file,
-                                        :picture )
+                                        :picture, :modelo)
     end
 
     def correct_user

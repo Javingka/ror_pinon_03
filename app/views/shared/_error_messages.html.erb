@@ -2,7 +2,7 @@
   <div id="error_explanation">
     <div class="alert alert-danger">
       <% err = pluralize(object.errors.count, "error" )%>
-      El formulario contiene <%= object.errors.count%> <%= err="error"? "error" : "errores"  %>.
+      El formulario contiene <%= object.errors.count%> <%= err=="error"? "error" : "errores"  %>.
     </div>
     <ul>
     <% object.errors.full_messages.each do |msg| %>

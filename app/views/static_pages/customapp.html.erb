@@ -9,7 +9,7 @@
 <!-- Parciales con los dibujos de cada modelo -->
   <div class="container">
   <% case @modelo %>
-  <% when 'AX4' %>
+  <% when 'ax4' %>
     <%= render 'static_pages/customapp_partials/customdisplays_ax4' %>
   <% when 'storm' %>
     <h1> DIBUJOS STORM </h1>
@@ -31,5 +31,10 @@
       <%= render 'static_pages/customapp_partials/miscustoms' %>
     </div>
   <% end %>
+
+<%= javascript_tag do %>
+  window.custompath = '<%= j custom_apps_url %>';
+  window.modelo = '<%= j @modelo %>';
+<% end %>
 
 <% end %>
