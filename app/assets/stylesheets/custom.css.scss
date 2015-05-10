@@ -4,6 +4,8 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #fff; //#eaeaea;
+$gray-light: #1f1f1f;
+$gray-dark: #0f0f0f;
 $gray-medium-light-alpha: rgba(255,255,255,.1);
 $white: #fff; 
 $radio-round: 5px;
@@ -455,4 +457,21 @@ span.picture {
 }
 
 
+/* Modificaciones btn bootstrap */
 
+.btn-primary {
+  background-color: $gray-light;
+  border-color: $gray-dark;
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: $gray-dark;
+  border-color: $gray-light;
+}

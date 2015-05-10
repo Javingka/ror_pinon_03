@@ -1,36 +1,37 @@
-
+<% provide(:title, "Moto Custom | #{current_user.name} ") %>
 <% content_for :show_custom do %>
+
 
 <% if !@customapp.nil? %>
   <% capp = @customapp %>
   <div class="row">
+    <div class="col-md-3 col-md-offset-5">
+      <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %>
+    </div>
+  </div>
+  
+  <div class="row">
     <div class="col-md-12">
       <div class="plantilla-moto">
 
-  <%= image_tag @customapp.picture.url if @customapp.picture? %>
-  <!-- <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %> -->
+        <%= image_tag @customapp.picture.url if @customapp.picture? %>
+<!-- <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %> -->
 <!-- <%= social_share_button_tag("Moto Custom tipo url", :url => @customapp.picture.url) %> -->
 <!-- <%= social_share_button_tag("Moto Custom ", :url => custom_app_path(@customapp.id) ) %> -->
     </div>
   </div>
  </div> 
  
+  <% if current_user?(capp.user) %>
+    <p class="center">
+     <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
+     <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
+    </p>
+  <% else %>
+     <%= link_to "Customiza tu moto",  customapp_path, method: :get,  class:'btn btn-primary'%>
+  <% end %>
 <% end %>
 
-<div class="row">
-  <div class="col-md-3 col-md-offset-5">
-    <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %>
-  </div>
-</div>
-
-<% if current_user?(capp.user) %>
-  <p class="center">
-   <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
-   <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
-  </p>
-<% else %>
-   <%= link_to "Customiza tu moto",  customapp_path, method: :get,  class:'btn btn-dafault'%>
-<% end %>
 
 
 <% end %>
