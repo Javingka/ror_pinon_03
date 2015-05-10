@@ -412,10 +412,17 @@ span.picture {
     font-size: 30px;
   }
 }
+.customButton{
+  .dropdown-menu {
+    margin-color: #000;
+    border-color: #000;
+    background-color: #000;
+  }
+}
 .dropdown-menu {
   margin-color: #000;
   border-color: #000;
-  background-color: #000;
+  background-color: #fff;
   li {
   }
 }

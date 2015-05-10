@@ -7,12 +7,13 @@ class StaticPagesController < ApplicationController
       @feed_items = current_user.feed.paginate(page: params[:page],:per_page => 10) # feed declared in user model.
     end
     @userPinon = User.find_by(email: 'admin@pinon.cl') #userPinon para mostrar las motos piñon
-#    if !@userPinon.nil?  # I had to put this in order to pass the test 
-#    @motos = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
-#    end
+    if !@userPinon.nil?  # I had to put this in order to pass the test 
+      @motos = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
+    end
   end
 
   def customapp 
+    @modelo = params[:modelo]
     gon.archivos 
     gon.update_path
     if logged_in?
@@ -20,7 +21,7 @@ class StaticPagesController < ApplicationController
         @customapp = current_user.custom_apps
         
         if customapp_in?
-          crea_gon_object() # crea objeto gon, con los datos de color de las partes de la moto
+          crea_gon_object() # crea objeto gon, con los datos de color de las partes de la moto => gon.archivos
           gon.update_path = custom_app_path(@customapp)  
         end
 #        puts @customapp.est_lat_file
