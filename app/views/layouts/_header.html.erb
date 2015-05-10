@@ -33,7 +33,7 @@
               <li><%= link_to "Nombre(AX4)", customapp_path(:modelo => 'ax4'), method: :get %> </li>
               <li><%= link_to "Nombre(Storm)", customapp_path(:modelo => 'storm'), method: :get %></li>
               <li class="divider"></li>
-              <li> <%= link_to "Ver todas", '#', method: "delete" %> </li>
+              <li> <%= link_to "Ver todas", custom_apps_path, method: "get" %> </li>
             </ul>
           </li>
           <!--     <li><%= link_to "Moto Custom", customapp_path, class:"page-scroll", method: :get %></li>-->

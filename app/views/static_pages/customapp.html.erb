@@ -7,6 +7,7 @@
 <br>
 
 <!-- Parciales con los dibujos de cada modelo -->
+  <% modelo = true %>
   <div class="container">
   <% case @modelo %>
   <% when 'ax4' %>
@@ -14,13 +15,22 @@
   <% when 'storm' %>
     <h1> DIBUJOS STORM </h1>
   <% else %>
-    <h1> Modelo para customización no defeinido </h1>
+    <% modelo = false %>
+    <h2> Escohe el modelo a customizar: </h2>
+        <div class="col-md-4 col-md-offset-2">
+          <%= link_to "Customiza tu AX4", customapp_path(:modelo => 'ax4'), method: :get, class:'btn btn-primary'%>
+        </div> 
+        <div class="col-md-4 ">
+          <%= link_to "Customiza tu Storm", customapp_path(:modelo => 'storm'), method: :get , class:'btn btn-primary'%>
+        </div>
   <% end %>
   </div>
 
 <!-- botones para guardar nuevo modelo o registrarse -->
   <div class="container">
+    <% if modelo %>
     <%= render 'static_pages/customapp_partials/customlinks' %>
+  <% end %>
   </div>
  
   <br>

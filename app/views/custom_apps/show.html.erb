@@ -1,4 +1,4 @@
-<% provide(:title, "Moto Custom | #{current_user.name} ") %>
+<% provide(:title, "Moto Custom | #{User.find_by(id: @customapp.user_id).name} ") %>
 <% content_for :show_custom do %>
 
 

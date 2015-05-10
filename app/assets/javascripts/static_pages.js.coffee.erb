@@ -78,7 +78,6 @@ nuevaParte = (parte, data_src) ->
     $(parte).attr src: data_src
 
 guardar_nueva = ->
-  alert modelo
   $.ajax
           type: 'POST'
           url: custompath #variable definida en _customapp.html.erb con el path para crear una nueva CustomApp 

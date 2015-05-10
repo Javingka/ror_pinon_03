@@ -3,9 +3,13 @@ class CustomAppsController < ApplicationController
   before_action :correct_user, only: :destroy
   before_action :evalua_maximo, only: :create
 
+  def index
+    @customapps = CustomApp.paginate(page: params[:page], :per_page => 30)
+ 
+  end
+
   def show
     @customapp = CustomApp.find(params[:id])
-    
   end
 
   def create
@@ -13,7 +17,7 @@ class CustomAppsController < ApplicationController
  #   puts customapp_params
     if @customapp.save
       customapp_in(@customapp) # CustomApp helper para definir una customización actual.
-      crea_imagen(@customapp.est_per_file.to_s, @customapp.apl_per_file.to_s, @customapp.asi_per_file.to_s, @customapp.man_per_file.to_s, "custom_app/perspectiva/per_plantilla.png")
+      crea_imagen(@customapp.est_per_file.to_s, @customapp.apl_per_file.to_s, @customapp.asi_per_file.to_s, @customapp.man_per_file.to_s, "custom_app/#{@customapp.modelo}/perspectiva/per_plantilla.png", @customapp.modelo)
       flash[:success] = "Customización guardada!"
       respond_to do |format|
        format.html { redirect_to customapp_path }
@@ -30,8 +34,8 @@ class CustomAppsController < ApplicationController
     @customapp = current_user.custom_apps.find_by(id: params[:id])
     customapp_in(@customapp) # CustomApp helper para definir una customización actual.
     respond_to do |format|
-      format.html { redirect_to customapp_path }
-      format.json { render :json => {:location => url_for(:controller => 'static_pages', :action => 'customapp') }}
+      format.html { redirect_to customapp_path(:modelo => @customapp.modelo) }
+      format.json { render :json => {:location => url_for(:controller => 'static_pages', :action => 'customapp',:modelo => @customapp.modelo) }}
     end
   end
 
@@ -108,16 +112,16 @@ class CustomAppsController < ApplicationController
       color_est = /([0-9A-F])+/.match(color_est.to_s)
     end 
 
-    def crea_imagen(est, apl, asi, man, base)
+    def crea_imagen(est, apl, asi, man, base, modelo)
       color_est = get_color_from_path est
       color_apl = get_color_from_path apl
       color_asi = get_color_from_path asi
       color_man = get_color_from_path man
-      est = "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_estanque_"+color_est.to_s+".png"
-      apl = "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_aplicacion_"+color_apl.to_s+".png"
-      asi = "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_asiento_"+color_asi.to_s+".png"
-      man = "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_manilla_"+color_man.to_s+".png"
-      base =  "#{Rails.root}"+"/app/assets/images/custom_app/perspectiva/per_plantilla.png"
+      est = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_estanque_"+color_est.to_s+".png"
+      apl = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_aplicacion_"+color_apl.to_s+".png"
+      asi = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_asiento_"+color_asi.to_s+".png"
+      man = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_manilla_"+color_man.to_s+".png"
+      base =  "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_plantilla.png"
       capa_1 = Magick::Image.read( est ).first
       capa_2 = Magick::Image.read( apl ).first
       capa_3 = Magick::Image.read( asi ).first

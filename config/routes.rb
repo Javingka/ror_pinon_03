@@ -29,6 +29,6 @@ Rails.application.routes.draw do
   resources :motos,               only: [:index, :new, :create, :destroy, :edit, :update, :show]
   get 'index_pinon' => 'motos#indexPinon'
   
-  resources :custom_apps,          only: [:create, :destroy, :update, :index, :show]
+  resources :custom_apps,          only: [:create, :destroy, :update, :index, :show, :index]
   post 'recarga' => 'custom_apps#recarga'
 end

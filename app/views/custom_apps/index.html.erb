@@ -1,0 +1,7 @@
+<%= will_paginate @customapps%>
+<% if !@customapps.nil? %> <!-- I had to put this to pass the test -->
+  <div class="row">
+   <%= render @customapps %>
+ </div>
+<% end %>
+<%= will_paginate @customapps%>
