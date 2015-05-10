@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StaticPagesControllerTest < ActionController::TestCase
 	def setup
-		@base_title = "Piñon"
+		@base_title = "Taller Piñon"
 	end
 	
   test "should get home" do

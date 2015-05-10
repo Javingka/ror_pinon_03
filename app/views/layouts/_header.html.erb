@@ -30,8 +30,8 @@
               Moto Custom<b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Nombre(AX4)", customapp_path(:modelo => 'AX4') %> </li>
-              <li><%= link_to "Nombre(Storm)", customapp_path(:modelo => 'storm') %></li>
+              <li><%= link_to "Nombre(AX4)", customapp_path(:modelo => 'AX4'), method: :get %> </li>
+              <li><%= link_to "Nombre(Storm)", customapp_path(:modelo => 'storm'), method: :get %></li>
               <li class="divider"></li>
               <li> <%= link_to "Ver todas", '#', method: "delete" %> </li>
             </ul>
@@ -57,6 +57,7 @@
           </li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Registrate!", signup_path  %></li>
         <% end %>
       </ul>
     </nav>
