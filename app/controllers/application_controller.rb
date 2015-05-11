@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper #Here we are making available this helper for all controllers in the app
   include CustomAppsHelper
+  include StaticPagesHelper
 
   private
 

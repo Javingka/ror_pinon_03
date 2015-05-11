@@ -3,11 +3,11 @@
     <div id="custom-moto-<%= custom_app.id %>" class="col-md-2">
       <div class="plantilla-moto">
       <%= link_to image_tag( capp.picture.url, alt: "imagen moto", style:'max-width:100%; height:auto;', id:'per-'+capp.id.to_s  ), custom_app_path(:id => capp.id), method: :get, id: 'ver-motocustom' %>  
-    </div>
       <p class="center">
-    <% if current_user?(capp.user) %>
-      <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
-      <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
+        <% if current_user?(capp.user) %>
+        <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
+        <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
     <% end %>
     </p>
+    </div>
   </div>

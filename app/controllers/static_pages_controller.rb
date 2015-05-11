@@ -21,7 +21,7 @@ class StaticPagesController < ApplicationController
         @customapp = current_user.custom_apps
         
         if customapp_in?
-          crea_gon_object() # crea objeto gon, con los datos de color de las partes de la moto => gon.archivos
+          crea_gon_object(current_custom.est_per_file, current_custom.apl_per_file, current_custom.asi_per_file, current_custom.man_per_file, current_custom.lla_per_file, "custom_app/#{current_custom.modelo}/perspectiva/per_plantilla.png", @modelo) # crea objeto gon, con los datos de color de las partes de la moto => gon.archivos
           gon.update_path = custom_app_path(@customapp)  
         end
 #        puts @customapp.est_lat_file
@@ -52,7 +52,7 @@ class StaticPagesController < ApplicationController
     @sup_file = "custom_app/"+modelo+"/superior/sup_"+parte+"_"+color+".png"
     per_r = ActionController::Base.helpers.asset_path @per_file
     lat_r = ActionController::Base.helpers.asset_path @lat_file
-    sup_r = ActionController::Base.helpers.asset_path @sup_file
+    sup_r = ActionController::Base.helpers.asset_path @sup_file 
     render :json => { :per => per_r, :lat => lat_r , :sup => sup_r } 
   end
 
@@ -74,31 +74,40 @@ class StaticPagesController < ApplicationController
 
   private
 
-    def crea_gon_object
-          @est_pf = current_custom.est_per_file #archivos del estanque
-          @est_lf = current_custom.est_lat_file
-          @est_sf = current_custom.est_sup_file
-          @apl_pf = current_custom.apl_per_file #archivos de la aplicacion del estanque
-          @apl_lf = current_custom.apl_lat_file
-          @apl_sf = current_custom.apl_sup_file
-          @asi_pf = current_custom.asi_per_file #archivos del asiento 
-          @asi_lf = current_custom.asi_lat_file
-          @asi_sf = current_custom.asi_sup_file
-          @man_pf = current_custom.man_per_file #manillar
-          @man_lf = current_custom.man_lat_file
-          @man_sf = current_custom.man_sup_file
-          @lla_pf = current_custom.lla_per_file # llantas
-          @lla_lf = current_custom.lla_lat_file
-          @lla_sf = current_custom.lla_sup_file
-          @foc_pf = current_custom.foc_per_file # foco
-          @foc_lf = current_custom.foc_lat_file
-          @foc_sf = current_custom.foc_sup_file
+    def crea_gon_object(est, apl, asi, man, lla, base, modelo)
+      color_est = get_color_from_path est
+      color_apl = get_color_from_path apl
+      color_asi = get_color_from_path asi
+      color_man = get_color_from_path man
+      color_lla = get_color_from_path lla
+      
+      #archivos del estanque
+          @est_pf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/perspectiva/per_estanque_"+color_est.to_s+".png" 
+          @est_lf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/lateral/lat_estanque_"+color_est.to_s+".png"
+          @est_sf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/superior/sup_estanque_"+color_est.to_s+".png"
+      #archivos de la aplicacion del estanque
+          @apl_pf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/perspectiva/per_aplicacion_"+color_apl.to_s+".png"
+          @apl_lf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/lateral/lat_aplicacion_"+color_apl.to_s+".png"
+          @apl_sf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/superior/sup_aplicacion_"+color_apl.to_s+".png"
+      #archivos del asiento 
+          @asi_pf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/perspectiva/per_asiento_"+color_asi.to_s+".png"
+          @asi_lf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/lateral/lat_asiento_"+color_asi.to_s+".png"
+          @asi_sf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/superior/sup_asiento_"+color_asi.to_s+".png"
+      #manillar
+          @man_pf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/perspectiva/per_manilla_"+color_man.to_s+".png" 
+          @man_lf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/lateral/lat_manilla_"+color_man.to_s+".png"
+          @man_sf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/superior/sup_manilla_"+color_man.to_s+".png"
+      # llantas
+          @lla_pf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/perspectiva/per_llanta_"+color_lla.to_s+".png" 
+          @lla_lf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/lateral/lat_llanta_"+color_lla.to_s+".png"
+          @lla_sf = ActionController::Base.helpers.asset_path "custom_app/"+modelo.to_s+"/superior/sup_llanta_"+color_lla.to_s+".png"
           
           gon.archivos = { est_pf: @est_pf, est_lf: @est_lf, est_sf: @est_sf,
                            apl_pf: @apl_pf, apl_lf: @apl_lf, apl_sf: @apl_sf,
                            asi_pf: @asi_pf, asi_lf: @asi_lf, asi_sf: @asi_sf,
-                           man_pf: @man_pf, man_lf: @man_lf, man_sf: @man_sf} 
-                          # Falta colocar la indo de llantay foco
+                           man_pf: @man_pf, man_lf: @man_lf, man_sf: @man_sf, 
+                           lla_pf: @lla_pf, lla_lf: @lla_lf, lla_sf: @lla_sf} 
+                          # Falta colocar la info de llantay foco
    end
 
 end

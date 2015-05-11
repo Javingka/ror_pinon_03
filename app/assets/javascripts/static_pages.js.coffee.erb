@@ -50,6 +50,8 @@ $().ready ->
        changePieza colhex,'asiento'
      when '3'
        changePieza colhex,'manilla'
+     when '4'
+       changePieza colhex,'llanta'
 
     #Usando la clase RGB color incluida en assets
     return
@@ -68,7 +70,7 @@ changePieza = (color, parte) ->
             par = parte.substring(0, 3)
             nuevaParte '#per-'+par+'-app', data.per
             nuevaParte '#lat-'+par+'-app', data.lat
-            nuevaParte '#sup-'+par+'-app', data.sup
+            nuevaParte '#sup-'+par+'-app', data.sup if par != 'lla' || par != 'apl'
   return
 
 nuevaParte = (parte, data_src) ->
@@ -153,4 +155,7 @@ cargar_cambios = (data) ->
   nuevaParte '#per-man-app', data['man_pf']
   nuevaParte '#lat-man-app', data['man_lf']
   nuevaParte '#sup-man-app', data['man_sf']
+  nuevaParte '#per-lla-app', data['lla_pf']
+  nuevaParte '#lat-lla-app', data['lla_lf']
+  nuevaParte '#sup-lla-app', data['lla_sf']
 

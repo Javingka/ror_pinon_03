@@ -10,18 +10,18 @@
   <% modelo = true %>
   <div class="container">
   <% case @modelo %>
-  <% when 'ax4' %>
-    <%= render 'static_pages/customapp_partials/customdisplays_ax4' %>
-  <% when 'storm' %>
-    <h1> DIBUJOS STORM </h1>
+  <% when 'vizcacha' %>
+    <%= render 'static_pages/customapp_partials/customdisplays_vizcacha' %>
+  <% when 'jacana' %>
+    <%= render 'static_pages/customapp_partials/customdisplays_jacana' %>
   <% else %>
     <% modelo = false %>
     <h2> Escohe el modelo a customizar: </h2>
         <div class="col-md-4 col-md-offset-2">
-          <%= link_to "Customiza tu AX4", customapp_path(:modelo => 'ax4'), method: :get, class:'btn btn-primary'%>
+          <%= link_to "Customiza tu Vizcacha", customapp_path(:modelo => 'vizcacha'), method: :get, class:'btn btn-primary'%>
         </div> 
         <div class="col-md-4 ">
-          <%= link_to "Customiza tu Storm", customapp_path(:modelo => 'storm'), method: :get , class:'btn btn-primary'%>
+          <%= link_to "Customiza tu Jacana", customapp_path(:modelo => 'jacana'), method: :get , class:'btn btn-primary'%>
         </div>
   <% end %>
   </div>
