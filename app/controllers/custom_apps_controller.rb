@@ -127,9 +127,10 @@ class CustomAppsController < ApplicationController
       capa_5 = Magick::Image.read( lla ).first
       capa_6 = Magick::Image.read( logo ).first
       capa_7 = Magick::Image.read( base ).first
-      capa_1.composite!(capa_2.composite!(capa_3.composite!( capa_4.composite!( capa_5.composite!(capa_6.composite!(capa_7, 0,0, Magick::OverCompositeOp ), 0,0, Magick::OverCompositeOp ),0,0, Magick::OverCompositeOp), 0,0, Magick::OverCompositeOp ), 0,0, Magick::OverCompositeOp ), 0,0, Magick::OverCompositeOp ) 
+      capa_1.composite!(capa_2.composite!(capa_3.composite!( capa_4.composite!( capa_5.composite!(capa_7, Magick::CenterGravity, Magick::OverCompositeOp ),Magick::CenterGravity, Magick::OverCompositeOp), Magick::CenterGravity, Magick::OverCompositeOp ), Magick::CenterGravity, Magick::OverCompositeOp ), Magick::CenterGravity, Magick::OverCompositeOp ) 
       capa_1 = capa_1.scale(840, 630)
-      capa_1.write("app/assets/images/imagem_temporal_moto.jpg")
+      capa_6.composite!(capa_1, Magick::CenterGravity, Magick::OverCompositeOp ) #capa de 1200 x 630 para tamaño facebook
+      capa_6.write("app/assets/images/imagem_temporal_moto.jpg")
 
       File.open(File.join(Rails.root,"/app/assets/images/imagem_temporal_moto.jpg")) do |f|
          current_custom.picture = f
