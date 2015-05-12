@@ -17,11 +17,14 @@
         
         <% if !current_page?(contact_path) && !current_page?(about_path) && !current_page?(customapp_path) && !current_page?(login_path)%>
           <% if current_page?(root_path) %>
+            <li><%= link_to "Que hacemos",  '#que-hacemos' , class:"page-scroll"%></li>
             <li><%= link_to "Motos Piñon",  '#galeria-motos' , class:"page-scroll"%></li>
           <% else %>
+            <li><%= link_to "Que hacemos", root_path+'#que-hacemos' , class:"page-scroll"%></li>
             <li><%= link_to "Motos Piñon", root_path+'#galeria-motos' , class:"page-scroll"%></li>
           <% end %>
         <% end %>
+        <li><%= link_to "Quienes somos",  about_path %></li>
 
         <!-- Moto Custom Menu -->
         <li style="line-height: 47px;"> | </li>

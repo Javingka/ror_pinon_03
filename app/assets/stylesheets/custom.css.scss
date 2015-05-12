@@ -275,6 +275,8 @@ input {
   margin-top: 0px;
 }
 .header-unit-0 {
+  margin-top: -50px;
+  margin-bottom: 50px;
   height: 600px;
   border: 2px solid #000;
   border-right:none;
@@ -481,4 +483,29 @@ span.picture {
   color: #fff;
   background-color: $gray-dark;
   border-color: $gray-light;
+}
+
+/* div con imagen de fondo y texto encima */
+#que-hacemos {
+  margin-top: 150px;
+}
+
+.jumbo-img {
+  height: 400px;
+  margin-top: -6px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	color:#fff;
+ 	background-color:#333;
+ font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+  h1 {
+    text-align: center;
+    padding-top: 50px; 
+  }
+}
+.espaco-imagem {
+  height: 400px;
+  background-color: rgba(0,0,0,.5);
 }

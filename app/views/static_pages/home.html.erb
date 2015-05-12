@@ -42,14 +42,25 @@
 
   <% end %>
 
-  <br>
+  <p id="que-hacemos" > </p>
+  <br >
+<div class="jumbo-img" style="background: url('<%=image_path('moto0.jpg') %>') no-repeat center center fixed; "> 
+  <div class="espaco-imagem"> 
+    <h1 style="color: #fff; font-size: 55px; font-family: 'monospace';"> <b> DISEÑO Y FABRICACIÓN DE MOTOS</b> </h1>
+          <h2 style='color: #fff;font-size: 30px'> <%= link_to 'Customiza', customapp_path  %> tu moto y nosotros la fabricamos  </h2>
+          <p class='center'style=' font-size: 20px;color: #fff;'> Y te invitamos a participar de una comunidad de amantes del diseño y fabricación de motos. <%= link_to "Únete", signup_path %></p>
+  </div>
+</div>
 
-    <div class="container" id="galeria-motos" >
-        <div class="jumbotron">
-          <h2> Motos Piñon  </h2>
+  <br >
+  <p id="galeria-motos"> </p>
+  <br >
+    <div class="container"  >
+ <!--       <div class="jumbotron"> -->
+    <h1 style="color: #fff; font-size: 50px; font-family: 'monospace';"> <b> NUESTRAS MOTOS</b> </h1>
              <%= render 'static_pages/galeria_pinon' %>
           <p class='center'> <%= link_to 'ver más', index_pinon_path  %> </p>
-        </div>
+ <!--       </div> -->
     </div>
 
 
