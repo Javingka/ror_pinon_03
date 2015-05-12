@@ -14,6 +14,13 @@ User.create!(name:  "Taller Piñon",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
+User.create!(name:  "Javingka",
+             email: "jcruzsm@gmail.com",
+             password:              "dinamo2015",
+             password_confirmation: "dinamo2015",
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
 # User.create!(name:  "Example User",
 #              email: "example@railstutorial.org",
 #              password:              "foobar",
