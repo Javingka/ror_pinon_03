@@ -8,7 +8,7 @@
 
 # The create! method is just like the create method, except it raises an exception for an invalid user rather than returning false
 User.create!(name:  "Taller Piñon",
-             email: "admin@pinon.cl",
+             email: "contacto@tallerpinon.cl",
              password:              "pad3828",
              password_confirmation: "pad3828",
              admin: true,
