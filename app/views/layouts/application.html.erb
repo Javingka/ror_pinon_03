@@ -3,13 +3,12 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
 
-    <% if customapp_in? %>
-       <meta property="og:title" content="Taller Piñon" />
-       <meta property="og:type" content="website" />
-       <meta property="og:image" content="<%= current_custom.picture.url %>" />
-       <meta property="og:image:type" content="image/jpeg" />
-       <meta property="og:description"  content="Tú la customizas y nosotros la fabricamos" />
-    <% end %>
+     <meta property="og:title" content="Taller Piñon" />
+     <meta property="og:type" content="website" />
+     <meta property="og:image:width" content="400" />
+     <meta property="og:image:height" content="300" />
+     <meta property="og:image:type" content="image/jpeg" />
+     <meta property="og:description"  content="Tú la customizas y nosotros la fabricamos" />
 
     <%= include_gon %>
 
