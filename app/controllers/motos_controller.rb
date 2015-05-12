@@ -1,6 +1,6 @@
 class MotosController < ApplicationController
-  before_action :logged_in_user, only: [:indexPinon, :index, :new, :create, :destroy, :show]
-  before_action :correct_user, only: :destroy
+  before_action :logged_in_user, only: [:indexPinon, :index, :new, :create, :edit , :update, :destroy, :show]
+  before_action :correct_user, only: [:destroy,:edit, :update]
 
   def index
     @motos = Moto.paginate(page: params[:page],  :per_page => 30)
@@ -38,10 +38,19 @@ class MotosController < ApplicationController
   def edit
   end
 
+  def update
+   if @moto.update(moto_params) #https://www.railstutorial.org/book/sign_up#sec-strong_parameters
+    flash[:success] = "Moto actualizada"
+    redirect_to @moto
+   else
+     render 'edit'
+   end
+  end
+
   private
 
     def moto_params
-      params.require(:moto).permit(:modelo, :name, :description, :picture)
+      params.require(:moto).permit(:modelo, :name, :description, :cilindrada, :ano, :picture)
     end
 
     def correct_user

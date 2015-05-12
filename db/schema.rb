@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510170314) do
+ActiveRecord::Schema.define(version: 20150512011016) do
 
   create_table "custom_apps", force: :cascade do |t|
     t.string   "est_per_file"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20150510170314) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "motopinon",   default: false
+    t.string   "ano"
+    t.string   "cilindrada"
   end
 
   add_index "motos", ["user_id"], name: "index_motos_on_user_id"

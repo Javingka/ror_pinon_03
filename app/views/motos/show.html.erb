@@ -11,14 +11,27 @@
 
   </div>
 </div>
+<br>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-10 col-md-offset-1">
     <p> Modelo:  <%= @moto.modelo %> </p>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-10 col-md-offset-1">
+    <p> Año:  <%= @moto.ano %> </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <p> Cilindrada:  <%= @moto.cilindrada %> </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
 <%= simple_format(@moto.description) %>
   </div>
