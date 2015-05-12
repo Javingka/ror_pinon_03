@@ -10,7 +10,8 @@ class ContactMailer < ApplicationMailer
     @correo = contact[:email]
     @asunto = contact[:asunto]
     @mensaje = contact[:message]
-    @greeting = "Hola hola!"
+    @moto_cotizada = contact[:moto_cot]
+    @greeting = "Nuevo mensaje!"
     mail to: "contacto@tallerpinon.cl", subject: 'Nuevo mensaje desde la web Piñon' 
   end
 end

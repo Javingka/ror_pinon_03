@@ -1,6 +1,6 @@
-ContactMailer#contact_form
+Contacto desde Taller Piñon
 
-  <%= @greeting %>, find me in app/views/contact_mailer/contact_form.html.erb
+  <%= @greeting %>
 
   De: <%= @nombre %> 
 Mail: <%= @correo %>  
@@ -10,3 +10,6 @@ Message:
 <%= @mensaje %>
 
 
+<% if !@moto_cotizada.nil? %>
+ver moto que se cotiza: <%= @moto_cotizada %> 
+<% end %>

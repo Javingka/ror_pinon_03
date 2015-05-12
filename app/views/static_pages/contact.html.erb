@@ -1,13 +1,43 @@
 <% provide(:title, 'Contact') %>
 
-<h1>Contacto</h1>
 
 <div class="row">
+  <% if customapp_in? %>
+    <h1>Cotización</h1>
+    <div id="custom-moto-<%= @custom_id %>" class="col-md-6">
+      <div class="plantilla-moto">
+       <%= image_tag( current_custom.picture.url, alt: "imagen moto", style:'max-width:100%; height:auto;', id:'per-'+current_custom.id.to_s  )%>  
+      </div>
+    </div>
+    <div class="col-md-6 ">
+      <%= form_for(:contact, url: contact_create_path) do |f| %>
+  
+
+        <%= f.label 'Nombre' %>
+        <%= f.text_field :name, class: 'form-control', value: @nombre %>
+  
+        <%= f.label 'Email'  %>
+        <%= f.text_field :email, class: 'form-control', value: @email %>
+  
+        <%= f.label 'Asunto' %>
+        <%= f.text_field :asunto, class: 'form-control', value: 'Cotización' %>
+
+        <%= f.hidden_field :moto_cot, value: "#{Rails.root}"+custom_app_path(:id => current_custom.id) %>
+
+        <%= f.label 'Mensaje' %>
+        <%= f.text_area :message, class: 'form-control'%>
+  
+        <%= f.submit "Enviar", class: "btn btn-primary" %>
+        <%= f.label 'Este formulario se enviará con el link respectivo de tu customización' %>
+      <% end %>
+  </div>
+  <% else %>
+    <h1>Contacto</h1>
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:contact, url: contact_create_path) do |f| %>
 
       <%= f.label 'Nombre' %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name, class: 'form-control', value: @nombre %>
 
       <%= f.label 'Email'  %>
       <%= f.text_field :email, class: 'form-control' %>
@@ -22,4 +52,7 @@
     <% end %>
 
   </div>
+
+  <% end %>
+
 </div>

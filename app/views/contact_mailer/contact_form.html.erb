@@ -1,7 +1,7 @@
-<h1>ContactMailer#contact_form</h1>
+<h1>Contacto desde Taller Piñon</h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/contact_mailer/contact_form.html.erb
+  <%= @greeting %> 
 </p>
 
 <p> De: <%= @nombre %> </p>
@@ -9,4 +9,8 @@
 <p> Asunto: <%= @asunto %> </p>
 <p> Message: </p> 
 <p> <%= @mensaje %> </p>
+
+<% if !@moto_cotizada.nil? %>
+  <p> ver moto que se cotiza: <%= @moto_cotizada %> </p>
+<% end %>
 
