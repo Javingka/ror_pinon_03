@@ -22,7 +22,21 @@
       <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %>
     </div>
   </div>
- 
+
+  <!-- INFO del usuario que creo la moto -->
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <hr>
+      <section class="user_info">
+        <% this_use = User.find_by(id: @customapp.user_id) %>
+        <%= link_to gravatar_for(this_use , size:50), this_use %>
+        <h3> <%= this_use.name %> </h3>
+        <span> <%= link_to "perfil publico", this_use%> </span>
+      </section>
+    </div>
+  </div>
+
   <% if current_user?(capp.user)  %>
     <p class="center">
      <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
