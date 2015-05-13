@@ -5,11 +5,11 @@
          <!-- leave with no logo, to not appear in facebook share -->
       <% else %>
       <% logo = image_tag("logo_pagina2.png", :alt => "Taller Piñon", :class=> "logo", size:'64x48') %>
-      <%= link_to logo +' Diseño y fabricación de motos', root_path , id: "logo" %> 
+      <%= link_to logo, root_path , id: "logo" %> 
       <% end %>
     <% else %>
         <% logo = image_tag("logo_pagina2.png", :alt => "Taller Piñon", :class=> "logo", size:'64x48') %>
-        <%= link_to logo +' Diseño y fabricación de motos', root_path , id: "logo" %> 
+        <%= link_to logo , root_path , id: "logo" %> 
     <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">

@@ -4,11 +4,6 @@
 
 <% if !@customapp.nil? %>
   <% capp = @customapp %>
-  <div class="row">
-    <div class="col-md-3 col-md-offset-5">
-      <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %>
-    </div>
-  </div>
   
   <div class="row">
     <div class="col-md-12">
@@ -21,6 +16,12 @@
     </div>
   </div>
  </div> 
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= social_share_button_tag("Moto Custom tipo photo", :'data-source' => @customapp.picture.url, :'data-type' => 'photo') %>
+    </div>
+  </div>
  
   <% if current_user?(capp.user)  %>
     <p class="center">
