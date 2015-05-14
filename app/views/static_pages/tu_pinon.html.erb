@@ -3,18 +3,20 @@
 <h2 class="center"> Cotiza tu piñon  </h2>
 
 <!-- Metodo temporan antes de implementar un modelo MotoPiñon -->
+<% @motosPinon.each do |m| %>
 <% @moto = @motosPinon[0] %>
 <% @modelo = @moto.modelo %>
 <% @precio = @moto.precio %>
 <ul class='motos-preview' >
     <%= render 'motopinon' %>
 </ul>
-
+<% end %>
+ <!-- 
 <% @moto = @motosPinon[1] %>
 <% @modelo = @moto.modelo %>
 <% @precio = @moto.precio %>
 <ul class='motos-preview' >
     <%= render 'motopinon' %>
   </ul> 
-
+  -->
 
