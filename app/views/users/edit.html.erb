@@ -1,12 +1,19 @@
 <% provide(:title, "Edit user") %>
 <h1> Actualiza tu perfil </h1>
 
+<div class="row"> 
+  <div class="center col-md-6 col-md-offset-3">
+    <%= link_to "Agregar una moto a mi perfil", new_moto_path, class: "btn btn-primary" %>
+<hr>
+  </div>
+</div>
+<br>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>  <!-- this is a partial -->
 
-      <%= f.label :name %>
+      <%= f.label 'Tu nombre' %>
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
@@ -15,7 +22,7 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "Confirmación de password" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       <%= f.submit "Guardar cambios", class: "btn btn-primary" %>
     <% end %>
@@ -23,13 +30,7 @@
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
       <!-- target=_blank in the Gravatar link is a neat trick to get the browser to open the page in a new window or tab -->
-      <a href="http://gravatar.com/emails" target=_blank>cambiar</a>
+      <a href="http://gravatar.com/emails" target=_blank>cambiar imagen</a>
     </div>
-  </div>
-</div>
-<div class="row"> 
-  <div class="center col-md-6 col-md-offset-3">
-    <hr>
-    <%= link_to "Agregar una moto a mi perfil", new_moto_path, class: "btn btn-primary" %>
   </div>
 </div>
