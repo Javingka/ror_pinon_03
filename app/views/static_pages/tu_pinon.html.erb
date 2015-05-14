@@ -4,9 +4,9 @@
 
 <!-- Metodo temporan antes de implementar un modelo MotoPiñon -->
 <% @motosPinon.each do |m| %>
-<% @moto = @motosPinon[0] %>
-<% @modelo = @moto.modelo %>
-<% @precio = @moto.precio %>
+<% @moto = m %>
+<% @modelo = m.modelo %>
+<% @precio = m.precio %>
 <ul class='motos-preview' >
     <%= render 'motopinon' %>
 </ul>
