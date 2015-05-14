@@ -6,7 +6,7 @@ class AccountActivationsController < ApplicationController
       user.activate
       log_in user
       flash[:success] = "Cuenta activada!"
-      redirect_to user_url.sub('pinon.herokuapp.com', 'www.tallerpinon.cl')# user(subdomain: 'www.tallerdinamo.cl') # redirect_back_or user
+      redirect_to root_url.sub('pinon.herokuapp.com', 'www.tallerpinon.cl')# user(subdomain: 'www.tallerdinamo.cl') # redirect_back_or user
     else
       flash[:danger] = "Link de activación invalido"
       redirect_to root_url.sub('pinon.herokuapp.com', 'www.tallerpinon.cl') #(subdomain: 'www.tallerdinamo.cl')
