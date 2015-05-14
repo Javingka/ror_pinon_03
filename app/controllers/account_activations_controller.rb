@@ -6,10 +6,10 @@ class AccountActivationsController < ApplicationController
       user.activate
       log_in user
       flash[:success] = "Cuenta activada!"
-      redirect_to user # redirect_back_or user
+      redirect_to user_url.sub('localhost:3000', 'www.tallerpinon.cl')# user(subdomain: 'www.tallerdinamo.cl') # redirect_back_or user
     else
       flash[:danger] = "Link de activación invalido"
-      redirect_to root_url
+      redirect_to root_url.sub('localhost:3000', 'www.tallerpinon.cl') #(subdomain: 'www.tallerdinamo.cl')
     end
   end
 
