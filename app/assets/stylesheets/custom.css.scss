@@ -569,9 +569,18 @@ span.picture {
 	background: image-url("social-share-button/pinterest.png") no-repeat;
 }
 
+/* Imagenes miniatura de galeria */
+.thumb-galery {
+  margin: 0px;
+  height: 150px;
+  width: 150px;
+}
 
-
-
+.titulo-mono{
+  color: #fff;
+  font-size: 55px;
+  font-family: 'monospace';
+}
 
 
 

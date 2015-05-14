@@ -1,6 +1,8 @@
  <% provide(:title, @moto.name) %> 
+<% content_for :show_moto do %>
 
-  <h1> <%= @moto.name %> </h1>
+<div class="container">
+  <h1 class="titulo-mono"> <%= @moto.name %> </h1>
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
@@ -13,6 +15,16 @@
 </div>
 <br>
 
+<% if User.find_by(id: @moto.user_id).email == 'contacto@tallerpinon.cl'%>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+<%= render 'shared/galeria_jacana' %>
+  </div>
+</div>
+<% end %>
+
+<br>
+<br>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <p> Modelo:  <%= @moto.modelo %> </p>
@@ -35,3 +47,15 @@
   <div class="col-md-10 col-md-offset-1">
 <%= simple_format(@moto.description) %>
   </div>
+</div>
+
+<% if User.find_by(id: @moto.user_id).email == 'contacto@tallerpinon.cl'%>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+          <%= link_to "cotizar modelo", contact_path( :modelo => @moto.modelo  )  ,  class:'btn btn-success'%>
+  </div>
+</div>
+<% end %>
+
+<% end %>
+

@@ -32,6 +32,8 @@
     <!-- CONTENT -->
     <% if content_for?(:home) %>
       <%= yield(:home) %>
+    <% elsif content_for?(:show_moto) %>
+      <%= yield(:show_moto) %>
     <% elsif content_for?(:custom) %>
       <%= yield(:custom) %>
     <% elsif content_for?(:show_custom) %>
