@@ -3,7 +3,7 @@
   <% if customapp_in? %>
     <div class="col-md-3 col-md-offset-3">
       <% usuario = User.find_by(id: current_user.id) %>
-      <%= link_to "cotizar modelo", contact_path(:name => usuario.name, :email => usuario.email, :custom_id => current_custom.id  )  ,  class:'btn btn-primary'%>
+      <%= link_to "cotizar modelo", contact_path(:name => usuario.name, :email => usuario.email, :custom_id => current_custom.id, :modelo => @modelo  )  ,  class:'btn btn-success'%>
     </div>
 
 <!--    <div class="col-md-3 col-md-offset-3">

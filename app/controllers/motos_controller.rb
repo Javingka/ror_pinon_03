@@ -7,8 +7,8 @@ class MotosController < ApplicationController
   end
   
   def indexPinon
-    @userPinon = User.find_by(email: 'admin@pinon.cl') 
-    @motosPinon = @userPinon.motos.paginate(page: params[:page],  :per_page => 30) 
+    @userPinon = User.find_by(email: 'contacto@tallerpinon.cl') 
+    @motosPinon = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
   end
 
   def new
@@ -50,7 +50,7 @@ class MotosController < ApplicationController
   private
 
     def moto_params
-      params.require(:moto).permit(:modelo, :name, :description, :cilindrada, :ano, :picture)
+      params.require(:moto).permit(:modelo, :name, :description, :cilindrada, :ano, :picture, :precio)
     end
 
     def correct_user

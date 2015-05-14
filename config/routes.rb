@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 	post 'fetch_pieza' => 'static_pages#fetch_pieza'
 	post 'save_changes' => 'static_pages#save_changes'
 	post 'contact_create' => 'static_pages#contact_create'
+	get 'tu_pinon' => 'static_pages#tu_pinon'
 	get 'contact' => 'static_pages#contact'
 	get 'signup' => 'users#new'
 

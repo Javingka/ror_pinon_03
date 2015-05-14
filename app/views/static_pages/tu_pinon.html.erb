@@ -1,0 +1,20 @@
+
+<h1> <%= @userPinon.motos.count %> Motos </h1>
+<h2 class="center"> Cotiza tu piñon  </h2>
+
+<!-- Metodo temporan antes de implementar un modelo MotoPiñon -->
+<% @moto = @motosPinon[0] %>
+<% @modelo = @moto.modelo %>
+<% @precio = @moto.precio %>
+<ul class='motos-preview' >
+    <%= render 'motopinon' %>
+</ul>
+
+<% @moto = @motosPinon[1] %>
+<% @modelo = @moto.modelo %>
+<% @precio = @moto.precio %>
+<ul class='motos-preview' >
+    <%= render 'motopinon' %>
+  </ul> 
+
+

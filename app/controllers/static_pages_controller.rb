@@ -29,6 +29,11 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def tu_pinon
+    @userPinon = User.find_by(email: 'contacto@tallerpinon.cl') 
+    @motosPinon = @userPinon.motos.paginate(page: params[:page],  :per_page => 2) 
+  end
+
   def share
     # To implement for record the data inside CustomApp
   end 
@@ -66,6 +71,7 @@ class StaticPagesController < ApplicationController
     @nombre = params[:name]
     @email = params[:email]
     @custom_id = params[:custom_id]
+    @modelo = params[:modelo]
 	end
 
   def contact_create

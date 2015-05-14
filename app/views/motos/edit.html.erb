@@ -1,4 +1,3 @@
-
 <h1> Edita aqui tu moto</h1>
 
 <div class="row">
@@ -19,6 +18,11 @@
       <%= f.label 'Cilindrada' %>
       <%= f.text_field :cilindrada, placeholder: "Cuál es la cilindrada de tu moto?", class: 'form-control' %>
     
+      <% if current_user.admin? %>
+        <%= f.label 'precio a publicar de la moto' %>
+        <%= f.text_field :precio %>
+      <% end %>
+
       <span class="picture">
       <%= f.label 'Cambia la foto de tu moto'  %>
         <%= f.file_field :picture %>

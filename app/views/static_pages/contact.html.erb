@@ -24,15 +24,22 @@
 
         <%= f.hidden_field :moto_cot, value: "#{Rails.root}"+custom_app_path(:id => current_custom.id) %>
 
+        <%= f.label 'Modelo' %>
+        <%= f.text_field :modelo, class: 'form-control', value: @modelo %>
+
         <%= f.label 'Mensaje' %>
         <%= f.text_area :message, class: 'form-control'%>
   
         <%= f.submit "Enviar", class: "btn btn-primary" %>
-        <%= f.label 'Este formulario se enviará con el link respectivo de tu customización' %>
+        <!--        <%= f.label 'Este formulario se enviará con el link respectivo de tu customización' %> -->
       <% end %>
   </div>
   <% else %>
-    <h1>Contacto</h1>
+    <% if !@modelo.nil? %>
+      <h1>Cotización</h1>
+    <% else %>
+      <h1>Contacto</h1>
+    <% end %>
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:contact, url: contact_create_path) do |f| %>
 
@@ -42,8 +49,15 @@
       <%= f.label 'Email'  %>
       <%= f.text_field :email, class: 'form-control' %>
 
-      <%= f.label 'Asunto' %>
-      <%= f.text_field :asunto, class: 'form-control' %>
+      <% if !@modelo.nil? %>
+        <%= f.label 'Modelo' %>
+        <%= f.text_field :modelo, class: 'form-control', value: @modelo %>
+        <%= f.label 'Asunto' %>
+        <%= f.text_field :asunto, class: 'form-control', value: 'Cotización' %>
+      <% else %>
+        <%= f.label 'Asunto' %>
+        <%= f.text_field :asunto, class: 'form-control' %>
+      <% end %>
 
       <%= f.label 'Mensaje' %>
       <%= f.text_area :message, class: 'form-control'%>

@@ -23,6 +23,11 @@
         <%= f.file_field :picture %>
       </span>
 
+      <% if current_user.admin? %>
+        <%= f.label 'precio a publicar de la moto' %>
+        <%= f.text_field :precio %>
+      <% end %>
+
       <div class="field">
         <%= f.label 'Descripción' %>
         <%= f.text_area :description, placeholder: "Aqui puedes dar detalles acerca de tu moto..." %>

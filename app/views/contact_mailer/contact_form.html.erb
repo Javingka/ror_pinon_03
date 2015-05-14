@@ -10,7 +10,8 @@
 <p> Message: </p> 
 <p> <%= @mensaje %> </p>
 
-<% if !@moto_cotizada.nil? %>
+<% if !@moto_cotizada.nil?%>
+  <p> Modelo cotizado: <%= @modelo %> </p>
   <p> ver moto que se cotiza: <%= @moto_cotizada %> </p>
 <% end %>
 

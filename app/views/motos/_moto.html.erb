@@ -17,6 +17,7 @@
           <span class="modelo"> modelo: <%= moto.modelo %> </span> <br>
           <span>  <%= link_to 'ver detalles', moto_path(moto)  %> </span > <br>
           <% if logged_in? && current_user.admin? && !current_user?(moto.user_id) %>
+            <%= link_to "editar moto", edit_moto_path(moto)  %> <br>
             <%= link_to "eliminar", moto, method: :delete, data: { confirm: "Estas seguro de eliminar esta moto?" } %>
           <% end %>
         </div>
