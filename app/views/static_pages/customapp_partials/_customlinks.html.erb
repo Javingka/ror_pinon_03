@@ -1,15 +1,15 @@
 <div class="row">
 <% if logged_in? %>
   <% if customapp_in? %>
-    <div class="col-md-3 col-md-offset-3">
+ <!--   <div class="col-md-3 col-md-offset-3">
       <% usuario = User.find_by(id: current_user.id) %>
       <%= link_to "cotizar modelo", contact_path(:name => usuario.name, :email => usuario.email, :custom_id => current_custom.id, :modelo => @modelo  )  ,  class:'btn btn-success'%>
-    </div>
+    </div> -->
 
 <!--    <div class="col-md-3 col-md-offset-3">
       <%= link_to "guardar cambios", '', id:'actualiza-customapp', class:'btn btn-primary'%>
     </div> -->
-    <div class="col-md-3  ">
+    <div class="col-md-4 col-md-offset-4  ">
       <%= link_to "guardar como nueva customizacion", '', id:'guardar-nueva-customapp', class:'btn btn-primary'%>
     </div>
   <% else %>

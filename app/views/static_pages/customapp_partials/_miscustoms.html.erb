@@ -21,6 +21,10 @@
       <%= link_to "editar", recarga_path(:id => capp.id), method: :post %> | 
       <%= link_to "eliminar", custom_app_path(:id => capp.id), method: :delete, data: {confirm: "Estas seguro de eliminar esta customizacion?"}%>
     </p>
+    <div class="col-md-12">
+      <% usuario = User.find_by(id: capp.user_id) %>
+      <%= link_to "cotizar modelo", contact_path(:name => usuario.name, :email => usuario.email, :custom_id => capp.id, :modelo => capp.modelo  )  ,  class:'btn btn-success'%>
+    </div>
     <% end %>
   </div>
   <% end %>

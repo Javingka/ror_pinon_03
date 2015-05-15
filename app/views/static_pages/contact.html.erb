@@ -6,7 +6,8 @@
     <h1>Cotización</h1>
     <div id="custom-moto-<%= @custom_id %>" class="col-md-6">
       <div class="plantilla-moto">
-       <%= image_tag( current_custom.picture.url, alt: "imagen moto", style:'max-width:100%; height:auto;', id:'per-'+current_custom.id.to_s  )%>  
+        <% img_url = CustomApp.find_by(id: @custom_id).picture.url %>
+       <%= image_tag( img_url, alt: "imagen moto", style:'max-width:100%; height:auto;', id:'per-'+current_custom.id.to_s  )%>  
       </div>
     </div>
     <div class="col-md-6 ">
