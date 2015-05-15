@@ -52,6 +52,8 @@ $().ready ->
        changePieza colhex,'manilla'
      when '4'
        changePieza colhex,'llanta'
+     when '5'
+       changePieza colhex,'foco'
 
     #Usando la clase RGB color incluida en assets
     return
@@ -158,4 +160,7 @@ cargar_cambios = (data) ->
   nuevaParte '#per-lla-app', data['lla_pf']
   nuevaParte '#lat-lla-app', data['lla_lf']
   nuevaParte '#sup-lla-app', data['lla_sf']
+  nuevaParte '#per-foc-app', data['foc_pf']
+  nuevaParte '#lat-foc-app', data['foc_lf']
+  nuevaParte '#sup-foc-app', data['foc_sf']
 

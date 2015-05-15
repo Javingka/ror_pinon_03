@@ -2,6 +2,7 @@ class CustomAppsController < ApplicationController
   include CarrierWave::RMagick
   before_action :correct_user, only: :destroy
   before_action :evalua_maximo, only: :create
+  before_action :evalua_imagenes_presentes, only: :create
 
   def index
     @customapps = CustomApp.paginate(page: params[:page], :per_page => 30)
@@ -13,11 +14,9 @@ class CustomAppsController < ApplicationController
   end
 
   def create
-    @customapp = current_user.custom_apps.build(customapp_params)
- #   puts customapp_params
     if @customapp.save
       customapp_in(@customapp) # CustomApp helper para definir una customización actual.
-      crea_imagen(@customapp.est_per_file.to_s, @customapp.apl_per_file.to_s, @customapp.asi_per_file.to_s, @customapp.man_per_file.to_s, @customapp.lla_per_file.to_s, "custom_app/#{@customapp.modelo}/perspectiva/per_plantilla.png", @customapp.modelo)
+      crea_imagen(@customapp.est_per_file.to_s, @customapp.apl_per_file.to_s, @customapp.asi_per_file.to_s, @customapp.man_per_file.to_s, @customapp.lla_per_file.to_s, @customapp.foc_per_file.to_s, "custom_app/#{@customapp.modelo}/perspectiva/per_plantilla.png", @customapp.modelo)
       flash[:success] = "Customización guardada!"
       respond_to do |format|
        format.html { redirect_to customapp_path }
@@ -42,7 +41,7 @@ class CustomAppsController < ApplicationController
   def update
     respond_to do |format|
       if current_custom.update(customapp_params)
-        crea_imagen(current_custom.est_per_file, current_custom.apl_per_file, current_custom.asi_per_file, current_custom.man_per_file,  current_custom.lla_per_file, "custom_app/#{@customapp.modelo}/perspectiva/per_plantilla.png", @customapp.modelo)
+        crea_imagen(current_custom.est_per_file, current_custom.apl_per_file, current_custom.asi_per_file, current_custom.man_per_file,  current_custom.lla_per_file, current_custom.foc_per_file, "custom_app/#{@customapp.modelo}/perspectiva/per_plantilla.png", @customapp.modelo)
         flash[:success] = "Customización guardada!"
         flash[:success] = "Cambios guardados!"
         format.html { redirect_to customapp_path }
@@ -91,6 +90,26 @@ class CustomAppsController < ApplicationController
       end
     end
 
+    def evalua_imagenes_presentes
+      @customapp = current_user.custom_apps.build(customapp_params)
+      t = 'transparente'
+      est = /(transparent)\w+/.match(@customapp.est_per_file).to_s
+      apl = /(transparent)\w+/.match(@customapp.apl_per_file).to_s
+      asi = /(transparent)\w+/.match(@customapp.asi_per_file).to_s
+      man = /(transparent)\w+/.match(@customapp.man_per_file).to_s
+      lla = /(transparent)\w+/.match(@customapp.lla_per_file).to_s
+      foc = /(transparent)\w+/.match(@customapp.foc_per_file).to_s
+      if est == t || apl == t || asi == t || man == t || lla == t || foc == t
+        flash[:info] = "Inténtalo otra vez, pero esta vez debes escoger un color para todas las piezas de la moto"
+        respond_to do |format|
+        format.html { redirect_to customapp_path }
+        format.json { render :json => {
+            :location => url_for(:controller => 'static_pages', :action => 'customapp')
+          }}
+        end
+      end
+    end
+
     def crea_imagen_byn(est, apl, asi, man, base)
       path_img_est = est# "perspectiva/per_estanque_E1FFC6.png"
       path_img_apl = apl# "perspectiva/per_aplicacion_ABA8FF.png"
@@ -107,17 +126,19 @@ class CustomAppsController < ApplicationController
       capa_1.write("imagem_temporal_moto_byn.jpg")
     end
   
-    def crea_imagen(est, apl, asi, man, lla, base, modelo)
+    def crea_imagen(est, apl, asi, man, lla, foc, base, modelo)
       color_est = get_color_from_path est
       color_apl = get_color_from_path apl
       color_asi = get_color_from_path asi
       color_man = get_color_from_path man
       color_lla = get_color_from_path lla
+      color_foc = get_color_from_path foc
       est = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_estanque_"+color_est.to_s+".png"
       apl = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_aplicacion_"+color_apl.to_s+".png"
       asi = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_asiento_"+color_asi.to_s+".png"
       man = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_manilla_"+color_man.to_s+".png"
       lla = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_llanta_"+color_lla.to_s+".png"
+      foc = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_foco_"+color_foc.to_s+".png"
       logo = "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/area_logo_transparente.png"
       base =  "#{Rails.root}"+"/app/assets/images/custom_app/"+modelo+"/perspectiva/per_plantilla.png"
       capa_1 = Magick::Image.read( est ).first
@@ -125,12 +146,13 @@ class CustomAppsController < ApplicationController
       capa_3 = Magick::Image.read( asi ).first
       capa_4 = Magick::Image.read( man ).first
       capa_5 = Magick::Image.read( lla ).first
-      capa_6 = Magick::Image.read( logo ).first
-      capa_7 = Magick::Image.read( base ).first
-      capa_1.composite!(capa_2.composite!(capa_3.composite!( capa_4.composite!( capa_5.composite!(capa_7, Magick::CenterGravity, Magick::OverCompositeOp ),Magick::CenterGravity, Magick::OverCompositeOp), Magick::CenterGravity, Magick::OverCompositeOp ), Magick::CenterGravity, Magick::OverCompositeOp ), Magick::CenterGravity, Magick::OverCompositeOp ) 
+      capa_6 = Magick::Image.read( foc ).first
+      capa_7 = Magick::Image.read( logo ).first
+      capa_8 = Magick::Image.read( base ).first
+      capa_1.composite!(capa_2.composite!(capa_3.composite!( capa_4.composite!( capa_5.composite!( capa_6.composite!(capa_8, Magick::CenterGravity, Magick::OverCompositeOp ),Magick::CenterGravity, Magick::OverCompositeOp),Magick::CenterGravity, Magick::OverCompositeOp), Magick::CenterGravity, Magick::OverCompositeOp ), Magick::CenterGravity, Magick::OverCompositeOp ), Magick::CenterGravity, Magick::OverCompositeOp ) 
       capa_1 = capa_1.scale(840, 630)
-      capa_6.composite!(capa_1, Magick::CenterGravity, Magick::OverCompositeOp ) #capa de 1200 x 630 para tamaño facebook
-      capa_6.write("app/assets/images/imagem_temporal_moto.jpg")
+      capa_7.composite!(capa_1, Magick::CenterGravity, Magick::OverCompositeOp ) #capa de 1200 x 630 para tamaño facebook
+      capa_7.write("app/assets/images/imagem_temporal_moto.jpg")
 
       File.open(File.join(Rails.root,"/app/assets/images/imagem_temporal_moto.jpg")) do |f|
          current_custom.picture = f
