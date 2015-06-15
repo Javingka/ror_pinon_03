@@ -2,7 +2,7 @@
 
 
 <div class="row">
-  <% if customapp_in? %>
+  <% if customapp_in? && CustomApp.find_by(id: @custom_id) != nil %>
     <h1>Cotización</h1>
     <div id="custom-moto-<%= @custom_id %>" class="col-md-6">
       <div class="plantilla-moto">
@@ -12,7 +12,6 @@
     </div>
     <div class="col-md-6 ">
       <%= form_for(:contact, url: contact_create_path) do |f| %>
-  
 
         <%= f.label 'Nombre' %>
         <%= f.text_field :name, class: 'form-control', value: @nombre %>
