@@ -15,12 +15,35 @@
 </div>
 <br>
 
+<!-- SI O USUARIO É 'TALLER PIÑON'  -->
 <% if User.find_by(id: @moto.user_id).email == 'contacto@tallerpinon.cl'%>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-<%= render 'shared/galeria_jacana' %>
-  </div>
-</div>
+  <% if @moto.name.downcase == 'jacana'%>
+    <!-- MOSTRAR GALERIA DE FOTOS -->
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+      <%= render 'shared/galeria_jacana' %>
+      </div>
+    </div> </br>
+    <!-- COTIZAR O MODELO' -->
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+      <%= link_to "cotizar modelo", contact_path( :modelo => @moto.modelo  )  ,  class:'btn btn-primary'%>
+      </div>
+    </div>
+  <% end %>
+  <% if @moto.name.downcase == 'vizcacha'%>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <%= render 'shared/galeria_vizcacha' %>
+      </div>
+    </div> </br>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+      <%= link_to "cotizar modelo", contact_path( :modelo => @moto.modelo  )  ,  class:'btn btn-primary'%>
+      </div>
+    </div>
+    
+  <% end %>
 <% end %>
 
 <br>
@@ -50,11 +73,6 @@
 </div>
 
 <% if User.find_by(id: @moto.user_id).email == 'contacto@tallerpinon.cl'%>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-          <%= link_to "cotizar modelo", contact_path( :modelo => @moto.modelo  )  ,  class:'btn btn-success'%>
-  </div>
-</div>
 <% end %>
 
 <% end %>
