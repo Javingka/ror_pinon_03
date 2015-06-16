@@ -14,13 +14,13 @@
         </div>
         <br>
         <div class="col-md-12">
-          <h3 class="nombre"> <%= @moto.name %></h3> <br>
+          <h3 class="nombre text-lake-35px"> <%= @moto.name %></h3> <br>
           <span class="modelo"> modelo: <%= @moto.modelo %> </span> <br>
           <span > ano: <%= @moto.ano %> </span> <br>
           <span > cilindrada: <%= @moto.cilindrada %> </span> <br>
 
-          <h3 class="nombre"> $ <%= @precio %></h3> <br>
-          <%= link_to "cotizar modelo", contact_path( :modelo => @modelo  )  ,  class:'btn btn-success'%>
+          <h3 class="nombre text-lake-35px"> $ <%= @precio %></h3> <br>
+          <%= link_to "cotizar modelo", contact_path( :modelo => @modelo  )  ,  class:'btn btn-primary'%>
           <hr>
           <% if logged_in? && current_user.admin? && !current_user?(@moto.user_id) %>
             <%= link_to "editar moto", edit_moto_path(@moto)  %> <br>

@@ -500,7 +500,7 @@ span.picture {
   background-size: cover;
 	color:#fff;
  	background-color:#333;
- font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+  font-family: 'lakeshoredriveregular', 'Open Sans',Arial,Helvetica,Sans-Serif;
   h1 {
     text-align: center;
     padding-top: 50px; 
@@ -579,8 +579,21 @@ span.picture {
 .titulo-mono{
   color: #fff;
   font-size: 55px;
-  font-family: 'monospace';
+  font-family: 'lakeshoredriveregular' ; //'eastmarketregular;
+  font-weight: 200;
 }
 
+.text-lake-20px{
+  color: #fff;
+  font-size: 20px;
+  font-family: 'lakeshoredriveregular' ; //'eastmarketregular;
+  font-weight: 200;
+}
+.text-lake-35px{
+  color: #fff;
+  font-size: 35px;
+  font-family: 'lakeshoredriveregular' ; //'eastmarketregular;
+  font-weight: 200;
+}
 
 
