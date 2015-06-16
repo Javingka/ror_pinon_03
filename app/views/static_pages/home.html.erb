@@ -45,9 +45,11 @@
   <p id="que-hacemos" > </p>
   <br >
 <div class="jumbo-img" style="background: url('<%=image_path('moto0.jpg') %>') no-repeat center center fixed; "> 
-  <div class="espaco-imagem"> 
-    <h1 class="titulo-mono"> DISEÑO Y FABRICACIÓN DE MOTOS </h1>
-          <h2 style='color: #fff;font-size: 30px'> <%= link_to 'Customiza', customapp_path  %> tu moto y nosotros la       fabricamos  </h2>
+  <div itemprop="review" itemscope itemtype="http://schema.org/Review" class="espaco-imagem"> 
+    <span itemprop="reviewBody">
+      <h1 class="titulo-mono"> DISEÑO Y FABRICACIÓN DE MOTOS </h1>
+      <h2 style='color: #fff;font-size: 30px'> <%= link_to 'Customiza', customapp_path  %> tu moto y nosotros la fabricamos  </h2>
+    </span>
       <div class="row">
         <div class="center col-md-8 col-md-offset-2" style="margin-top:0%;">
           <div class="col-md-4 col-md-offset-2">

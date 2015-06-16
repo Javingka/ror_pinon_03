@@ -1,14 +1,14 @@
-<header class="navbar navbar-fixed-top ">
+<header itemscope itemtype="http://schema.org/LocalBusiness" class="navbar navbar-fixed-top ">
   <div class="container">
     <% if content_for?(:show_custom) %>
       <% if !logged_in? %>
          <!-- leave with no logo, to not appear in facebook share -->
       <% else %>
-      <% logo = image_tag("logo_pagina2.png", :alt => "Taller Piñon", :class=> "logo", size:'64x48') %>
+        <% logo = image_tag("logo_pagina2.png", :alt => "Taller Piñon", :class=> "logo", size:'64x48', :itemprop=>"image") %>
       <%= link_to logo, root_path , id: "logo" %> 
       <% end %>
     <% else %>
-        <% logo = image_tag("logo_pagina2.png", :alt => "Taller Piñon", :class=> "logo", size:'64x48') %>
+        <% logo = image_tag("logo_pagina2.png", :alt => "Taller Piñon", :class=> "logo", size:'64x48', :itemprop=>"image") %>
         <%= link_to logo , root_path , id: "logo" %> 
     <% end %>
     <nav>
