@@ -492,7 +492,7 @@ span.picture {
 }
 
 .jumbo-img {
-  height: 400px;
+  height: 600px;
   margin-top: -6px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -500,15 +500,14 @@ span.picture {
   background-size: cover;
 	color:#fff;
  	background-color:#333;
-  font-family: 'lakeshoredriveregular', 'Open Sans',Arial,Helvetica,Sans-Serif;
   h1 {
     text-align: center;
     padding-top: 50px; 
   }
 }
 .espaco-imagem {
-  height: 400px;
-  background-color: rgba(0,0,0,.5);
+  height: 600px;
+  background-color: rgba(0,0,0,.8);
 }
 
 /* ICONOS GRANDES para links sociales */
@@ -574,6 +573,11 @@ span.picture {
   margin: 0px;
   height: 150px;
   width: 150px;
+}
+.titulo-default{
+  color: #fff;
+  font-size: 55px;
+  font-weight: 200;
 }
 
 .titulo-mono{
