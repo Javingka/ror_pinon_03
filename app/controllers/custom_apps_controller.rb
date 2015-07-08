@@ -22,7 +22,7 @@ class CustomAppsController < ApplicationController
       if (params[:custom_app][:cotiza] == '1')
         flash[:success] = "Tu customización ha sido guardada!. Envia tu cotización."
       else
-        flash[:success] = "Tu customización ha sido guardada!. Esta es tu página, puedes compartirla!, mira los botones abajo."
+        flash[:success] = "Tu customización ha sido guardada!. Puedes compartirla!, mira los botones abajo."
       end
 
       respond_to do |format|
