@@ -15,14 +15,23 @@ class CustomAppsController < ApplicationController
 
   def create
     if @customapp.save
+      usuario = User.find_by(id: @customapp.user_id)
       customapp_in(@customapp) # CustomApp helper para definir una customización actual.
       crea_imagen(@customapp.est_per_file.to_s, @customapp.apl_per_file.to_s, @customapp.asi_per_file.to_s, @customapp.man_per_file.to_s, @customapp.lla_per_file.to_s, @customapp.foc_per_file.to_s, "custom_app/#{@customapp.modelo}/perspectiva/per_plantilla.png", @customapp.modelo)
-      flash[:success] = "Customización guardada!"
+
+      if (params[:custom_app][:cotiza] == '1')
+        flash[:success] = "Tu customización ha sido guardada!. Envia tu cotización."
+      else
+        flash[:success] = "Tu customización ha sido guardada!. Esta es tu página, puedes compartirla!, mira los botones abajo."
+      end
+
       respond_to do |format|
        format.html { redirect_to customapp_path }
        format.json { render :json => {
-          :location => url_for(:controller => 'static_pages', :action => 'customapp', :method => 'get')
-        }}
+          :location => url_for(:controller => 'custom_apps', :action => 'show', :id => @customapp.id ),
+          :location_cotiza =>  contact_path(:name => usuario.name, :email => usuario.email, :custom_id => @customapp.id, :modelo => @customapp.modelo  )         # :location => url_for(:controller => 'static_pages', :action => 'customapp', :method => 'get')
+        }
+       }
       end
     else
       redirect_to customapp_path

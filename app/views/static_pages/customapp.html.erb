@@ -29,8 +29,16 @@
       </div>
   <% end %>
   </div>
+  
+  <!-- imagen para cuando se esta cargando la imagen -->
+  <div class="row" id="loading-indicator">
+    <div class="col-xs-1 col-xs-offset-6">
+      <%= image_tag("loading.gif", size:'30x30')%>
+    </div>
+    </br></br>
+  </div>
 
-<!-- botones para guardar nuevo modelo o registrarse -->
+  <!-- botones para guardar nuevo modelo o registrarse -->
   <div class="container">
     <% if modelo %>
     <%= render 'static_pages/customapp_partials/customlinks' %>
@@ -38,6 +46,8 @@
   </div>
  
   <br>
+
+
 
 <!-- visualizaciones de las customizaciones del usuario actual -->
   <% if logged_in? %>
@@ -47,7 +57,7 @@
   <% end %>
 
 <%= javascript_tag do %>
-  window.custompath = '<%= j custom_apps_url %>';
+  window.custompath = '<%= j custom_apps_url %>'; 
   window.modelo = '<%= j @modelo %>';
 <% end %>
 

@@ -2,7 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  
+  $('#loading-indicator').hide()
+  # hide it initially.
+  $(document).ajaxStart(->
+    $('#loading-indicator').show()
+    # show on any Ajax event.
+    return
+  ).ajaxStop ->
+    $('#loading-indicator').hide()
+    # hide it when it is done.
+    return
+
   #set opacity to 0.4 for all the images  
   #opacity = 1 - completely opaque  
   #opacity = 0 - invisible  
@@ -19,6 +29,8 @@ $(document).ready ->
 
   $('#guardar-nueva-customapp').click (event) ->
     guardar_nueva()
+  $('#guardar-nueva-customapp-cotiza').click (event) ->
+    guardar_nueva_cotiza()
   $('#actualiza-customapp').click (event) ->
     actualizar_custom()
     #    alert($("#per-est-app").attr('src'))
@@ -106,12 +118,43 @@ guardar_nueva = ->
               foc_lat_file: $("#lat-foc-app").attr('src')
               foc_sup_file: $("#sup-foc-app").attr('src')
               modelo: modelo
+              cotiza: 0
           dataType: "json"
           success: (data) ->
              window.location = data.location
-     #       alert data
   return
 
+guardar_nueva_cotiza = ->
+  $.ajax
+          type: 'POST'
+          url: custompath #variable definida en _customapp.html.erb con el path para crear una nueva CustomApp 
+          data:
+            custom_app:
+              est_per_file: $("#per-est-app").attr('src')
+              est_lat_file: $("#lat-est-app").attr('src')
+              est_sup_file: $("#sup-est-app").attr('src')
+              apl_per_file: $("#per-apl-app").attr('src')
+              apl_lat_file: $("#lat-apl-app").attr('src')
+              apl_sup_file: $("#sup-apl-app").attr('src')
+              asi_per_file: $("#per-asi-app").attr('src')
+              asi_lat_file: $("#lat-asi-app").attr('src')
+              asi_sup_file: $("#sup-asi-app").attr('src')
+              man_per_file: $("#per-man-app").attr('src')
+              man_lat_file: $("#lat-man-app").attr('src')
+              man_sup_file: $("#sup-man-app").attr('src')
+              lla_per_file: $("#per-lla-app").attr('src')
+              lla_lat_file: $("#lat-lla-app").attr('src')
+              lla_sup_file: $("#sup-lla-app").attr('src')
+              foc_per_file: $("#per-foc-app").attr('src')
+              foc_lat_file: $("#lat-foc-app").attr('src')
+              foc_sup_file: $("#sup-foc-app").attr('src')
+              modelo: modelo
+              cotiza: 1 #variavle que dentro del controlador define cual es la siguiente pagina a mostrar
+          dataType: "json"
+          success: (data) ->
+             window.location = data.location_cotiza
+     #       alert data
+  return
 
 
 
