@@ -24,6 +24,7 @@
      <meta property="og:image:height" content="630" />
 
     <%= include_gon %>
+    
 
     <%= stylesheet_link_tag 'application', media: 'all','data-turbolinks-track' => true %>
     <link rel="stylesheet" href="css/blueimp-gallery.min.css">
@@ -31,6 +32,7 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
 
+    <%= render 'layouts/google_analytics' %>
   </head>
   <body style="background-color: black;">
 
