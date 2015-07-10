@@ -1,0 +1,15 @@
+<h1>  Taller Piñon </h1>
+
+<p> Hola <%= @user.name %> </p>
+
+<p> Bienvenido a la comunidad de Taller Piñon. </p>
+</p> Haz iniciado sesión desde facebook, tu cuenta en Taller Piñon esta activa!</p>
+
+<p> Se generó una contraseña automática para tu cuenta: <%= @fb_key %> </p>
+<br>
+<p> Te recomendamos que entres al panel de configuración y cambies la contraseña. </p>
+
+
+
+<%= link_to "configuración de cuenta", edit_user_url(@user) %>
+

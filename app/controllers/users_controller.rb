@@ -21,14 +21,36 @@ class UsersController < ApplicationController
   end
 
 	def create
-		@user = User.new(user_params)  #https://www.railstutorial.org/book/sign_up#sec-strong_parameters
-		if @user.save
-      @user.send_activation_email
-      flash[:info] = "Por favor revisa tu correo electrónico para activar tu cuenta"
-      redirect_to root_url
-		else
-			render 'new'
-		end
+    fb = false
+    if !env["omniauth.auth"].nil? # env["omniauth.auth"] es un has con la info entregada por facebook. 
+      fb = true
+    end
+
+    # Si la creación del usuario se realizada por medio de facebook tiene una activación instantanea
+		if fb
+      nom = env["omniauth.auth"].info.first_name
+      ema = env["omniauth.auth"].info.email
+      pwd = SecureRandom.urlsafe_base64
+      @user = User.new(:name => nom, :email => ema, :password => pwd, :password_confirmation => pwd)
+      if @user.save
+        path = edit_account_activation_url(@user.activation_token, email:@user.email) 
+        @user.send_activation_email_fb(pwd)
+        redirect_to path
+      else
+        render 'new'
+      end
+    else  
+      @user = User.new(user_params)  #https://www.railstutorial.org/book/sign_up#sec-strong_parameters
+		  if @user.save
+        @user.send_activation_email
+        flash[:info] = "Por favor revisa tu correo electrónico para activar tu cuenta"
+        redirect_to root_url
+		  else
+			  render 'new'
+		  end
+
+    end
+
 	end
 
   def edit

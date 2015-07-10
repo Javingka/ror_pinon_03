@@ -65,6 +65,11 @@ class User < ActiveRecord::Base
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
+  
+  # Sends activation email when signed up with facebook
+  def send_activation_email_fb(senha)
+    UserMailer.account_activation_fb(self, senha).deliver_now
+  end
 
   # Sets the password reset attributes.
   def create_reset_digest
@@ -107,6 +112,17 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+  # Metodo de omniauth para iniciar session c/ facebook
+  def self.from_omniauth(auth)
+#    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+#      user.provider = auth.provider
+#      user.uid = auth.uid
+#      user.name = auth.info.name
+#      user.oauth_token = auth.credentials.token
+#      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+#      user.save!
+#    end
+  end
 
   private
 
