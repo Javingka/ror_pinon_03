@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
 	def create
     fb = false
-    if !env["omniauth.auth"].nil? # env["omniauth.auth"] es un has con la info entregada por facebook. 
+    if !env["omniauth.auth"].nil? # env["omniauth.auth"] es un hash con la info entregada por facebook. 
       fb = true
     end
 

@@ -1,5 +1,5 @@
 <% provide(:title, "log in") %>
-<h1>Log in</h1>
+<h1>Entrar</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -8,8 +8,8 @@
       <%= f.label :email %>
       <%= f.text_field :email, class: "form-control" %>
 
-      <%= f.label :password %>
-      <%= link_to "(olvide mi password)", new_password_reset_path %>
+      <%= f.label "Contraseña" %>
+      <%= link_to "(olvide mi contraseña)", new_password_reset_path %>
       <%= f.password_field :password,  class: "form-control" %>
 
       <%= f.label :remember_me, class: "checkbox inline" do %>
@@ -17,7 +17,7 @@
         <span> Recuerdame en este computador </span>
       <% end %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "Entrar", class: "btn btn-primary" %>
     <% end %>
 
     <p> Usuario nuevo? <%= link_to "Regístrate!", signup_path %> </p>
