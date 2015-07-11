@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :custom_apps,          only: [:create, :destroy, :update, :index, :show, :index]
   post 'recarga' => 'custom_apps#recarga'
 
-  get 'auth/:provider/callback', to: 'users#create'
+  get 'auth/:provider/callback', to: 'users#omniauth_listener'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 

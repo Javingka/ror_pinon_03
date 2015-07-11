@@ -19,6 +19,33 @@ class UsersController < ApplicationController
   def new
 		@user = User.new
   end
+  
+  def omniauth_listener
+    if !env["omniauth.auth"].nil? # env["omniauth.auth"] es un hash con la info entregada por facebook. 
+      fb = true
+      uf = env["omniauth.auth"]
+      ue = uf.info.email
+      user = User.find_by(email: ue)
+      
+      if user.nil? # No existe usuario con este correo, inferimos que se presiono el boton de Registro
+        create
+      else
+        # El usuario existe, se puede iniciar session
+        if user.activated?
+          log_in user
+          remember(user)
+          redirect_back_or user #root_url
+        else
+          message  = "Cuenta no activada. "
+          message += "Revisa tu correo electrónico para encontrar el link de activación. "
+          flash[:warning] = message
+          redirect_to root_url
+        end
+
+      end
+
+    end
+  end
 
 	def create
     fb = false
