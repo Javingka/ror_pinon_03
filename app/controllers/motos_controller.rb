@@ -1,5 +1,5 @@
 class MotosController < ApplicationController
-  before_action :logged_in_user, only: [:indexPinon, :index, :new, :create, :edit , :update, :destroy, :show]
+  before_action :logged_in_user, only: [:indexPinon, :index, :new, :create, :edit , :update, :destroy]
   before_action :correct_user, only: [:destroy,:edit, :update]
 
   def index
