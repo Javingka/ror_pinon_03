@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-#  root 'static_pages#home'
-  root :to => redirect("https://www.facebook.com/tallerpinon?fref=ts")
+  root 'static_pages#home'
+  #root :to => redirect("https://www.facebook.com/tallerpinon?fref=ts")
 
 	get	'home' => 'static_pages#home'
 	get	'help' => 'static_pages#help'
